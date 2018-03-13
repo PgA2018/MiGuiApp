@@ -1,17 +1,116 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Inicio</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <ion-row>
+        <ion-row></ion-row>
+        <h2>Hoteles</h2>
+        <ion-slides>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="300" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Hotel Los Corales
+                        </ion-card-title>
+                        <p>
+                            El mejor hotel de Tumaco, servicio como en casa.
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="80" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Hotel La Red
+                        </ion-card-title>
+                        <p>
+                            El mejor hotel de Tumaco, servicio como en casa.
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="80" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Hotel El Morro
+                        </ion-card-title>
+                        <p>
+                            Hotel de Tumaco, servicio como en casa.
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+        <h2>Restaurantes</h2>
+        <ion-slides>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="300" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Restaurante Los Corales
+                        </ion-card-title>
+                        <p>
+                            El mejor restaurante de Tumaco, servicio como en casa.
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="80" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Hotel La Red
+                        </ion-card-title>
+                        <p>
+                            El mejor restaurante de Tumaco, servicio como en casa.
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+        <h2>Lugares Turisticos</h2>
+        <ion-slides>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="300" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            Cancha San Judas
+                        </ion-card-title>
+                        <p>
+                            La Cancha San Judas
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+        <h2>Bares</h2>
+        <ion-slides>
+            <ion-slide>
+                <ion-card>
+                    <img src="" width="300" height="80" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            bar San Alejo
+                        </ion-card-title>
+                        <p>
+                            El mejor bar de Tumaco
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </ion-row>
 </ion-content>
