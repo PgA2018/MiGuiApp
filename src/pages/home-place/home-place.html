@@ -1,18 +1,34 @@
-<!--
-  Generated template for the HomePlacePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>home-place</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>Nombre del lugar</ion-title>
+    </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
+    <ion-row>
+        <ion-slides>
+            <ion-slide>
+                <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+            </ion-slide>
+            <ion-slide>
+                <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+            </ion-slide>
+            <ion-slide>
+                <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+            </ion-slide>
+        </ion-slides>
+    </ion-row>
+    <ion-card>
+        <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
+            <h2>Descripción muy buena del lugar</h2>
+            <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+                    <hr>
+                <h3>Contacto</h3>
+                <p>Telefono: 312312</p>
+                <p>Correo: lugar@lugar.com</p>
+            </expandable>
+        </button>
+    </ion-card>
+    <ion-card>
 
+    </ion-card>
 </ion-content>

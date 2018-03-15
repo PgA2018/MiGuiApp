@@ -6,11 +6,15 @@ import { MyApp } from './app.component';
 
 import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
+import { HomePlacePage } from '../pages/home-place/home-place';
+import { HomePlacesListPage } from '../pages/home-places-list/home-places-list';
 import { TaskPage } from '../pages/task/task';
 import { TaskModalPage } from '../pages/task-modal/task-modal';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 import { ConfigurationAboutPage } from '../pages/configuration-about/configuration-about';
 import { TabsPage } from '../pages/tabs/tabs';
+
+import { ExpandableComponent } from '../components/expandable/expandable';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,11 +24,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     MapPage,
     HomePage,
+    HomePlacePage,
+    HomePlacesListPage,
     TaskPage,
     TaskModalPage,
     ConfigurationPage,
     ConfigurationAboutPage,
-    TabsPage
+    TabsPage,
+    ExpandableComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +42,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     MapPage,
     HomePage,
+    HomePlacePage,
+    HomePlacesListPage,
     TaskPage,
     TaskModalPage,
     ConfigurationPage,

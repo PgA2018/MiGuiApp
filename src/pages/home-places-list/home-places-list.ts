@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HomePlacesListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomePlacePage } from '../home-place/home-place';
 
 @IonicPage()
 @Component({
@@ -20,6 +14,10 @@ export class HomePlacesListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePlacesListPage');
+  }
+
+  goToPlace(){
+    this.navCtrl.push(HomePlacePage);
   }
 
 }

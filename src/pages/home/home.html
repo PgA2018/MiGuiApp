@@ -12,7 +12,7 @@
     </ion-row>
     <hr>
     <ion-row>
-        <ion-card (click)="goToHotels()">
+        <ion-card (click)="goToList()">
             <ion-item>
                 <h2>Hoteles</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
@@ -20,7 +20,7 @@
         </ion-card>
         <ion-slides>
             <ion-slide>
-                <ion-card>
+                <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content no-padding>
                         <ion-card-title no-padding padding-top>
@@ -36,7 +36,7 @@
     </ion-row>
     <hr>
     <ion-row>
-        <ion-card (click)="goToRestaurants()">
+        <ion-card (click)="goToList()">
             <ion-item>
                 <h2>Restaurantes</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
@@ -56,24 +56,11 @@
                     </ion-card-content>
                 </ion-card>
             </ion-slide>
-            <ion-slide>
-                <ion-card>
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
-                    <ion-card-content>
-                        <ion-card-title>
-                            Restaurante La Red
-                        </ion-card-title>
-                        <p>
-                            El mejor restaurante de Tumaco, servicio como en casa.
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-slide>
         </ion-slides>
     </ion-row>
     <hr>
     <ion-row>
-        <ion-card (click)="goToTuristicPlaces()">
+        <ion-card (click)="goToList()">
             <ion-item>
                 <h2>Lugares Turísticos</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
@@ -97,7 +84,7 @@
     </ion-row>
     <hr>
     <ion-row>
-        <ion-card (click)="goToBars()">
+        <ion-card (click)="goToList()">
             <ion-item>
                 <h2>Bares</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
