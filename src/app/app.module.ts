@@ -8,6 +8,8 @@ import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
 import { HomePlacePage } from '../pages/home-place/home-place';
 import { HomePlacesListPage } from '../pages/home-places-list/home-places-list';
+import { HomeServicePage } from '../pages/home-service/home-service';
+import { HomeServicesListPage } from '../pages/home-services-list/home-services-list';
 import { TaskPage } from '../pages/task/task';
 import { TaskModalPage } from '../pages/task-modal/task-modal';
 import { ConfigurationPage } from '../pages/configuration/configuration';
@@ -15,6 +17,8 @@ import { ConfigurationAboutPage } from '../pages/configuration-about/configurati
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { ExpandableComponent } from '../components/expandable/expandable';
+
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,6 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     HomePlacePage,
     HomePlacesListPage,
+    HomeServicePage,
+    HomeServicesListPage,
     TaskPage,
     TaskModalPage,
     ConfigurationPage,
@@ -35,7 +41,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,6 +51,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     HomePlacePage,
     HomePlacesListPage,
+    HomeServicePage,
+    HomeServicesListPage,
     TaskPage,
     TaskModalPage,
     ConfigurationPage,

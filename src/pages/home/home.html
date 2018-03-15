@@ -10,31 +10,37 @@
         <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
         </ion-searchbar>
     </ion-row>
-    <hr>
+    <div class="hr-padding">
+        <hr>
+    </div>
     <ion-row>
         <ion-card (click)="goToList()">
-            <ion-item>
+            <button ion-item>
                 <h2>Hoteles</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
-            </ion-item>
+            </button>
         </ion-card>
         <ion-slides>
             <ion-slide>
                 <ion-card (click)="goToPlace()">
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
-                    <ion-card-content no-padding>
-                        <ion-card-title no-padding padding-top>
-                            Hotel Los Corales
-                        </ion-card-title>
-                        <p>
-                            El mejor Hotel de Tumaco, servicio como en casa.
-                        </p>
-                    </ion-card-content>
+                    <button ion-item>
+                        <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                        <ion-card-content>
+                            <ion-card-title>
+                                Hotel Los Corales
+                            </ion-card-title>
+                            <p>
+                                El mejor Hotel de Tumaco, servicio como en casa.
+                            </p>
+                        </ion-card-content>
+                    </button>
                 </ion-card>
             </ion-slide>
         </ion-slides>
     </ion-row>
-    <hr>
+    <div class="hr-padding">
+        <hr>
+    </div>
     <ion-row>
         <ion-card (click)="goToList()">
             <ion-item>
@@ -44,21 +50,23 @@
         </ion-card>
         <ion-slides>
             <ion-slide>
-                <ion-card>
+                <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
                             Restaurante Los Corales
                         </ion-card-title>
                         <p>
-                            El mejor restaurante de Tumaco, servicio como en casa.
+                            El mejor restaurante de Tumaco, servicio como asdasdaden casa.
                         </p>
                     </ion-card-content>
                 </ion-card>
             </ion-slide>
         </ion-slides>
     </ion-row>
-    <hr>
+    <div class="hr-padding">
+        <hr>
+    </div>
     <ion-row>
         <ion-card (click)="goToList()">
             <ion-item>
@@ -82,7 +90,9 @@
             </ion-slide>
         </ion-slides>
     </ion-row>
-    <hr>
+    <div class="hr-padding">
+        <hr>
+    </div>
     <ion-row>
         <ion-card (click)="goToList()">
             <ion-item>
