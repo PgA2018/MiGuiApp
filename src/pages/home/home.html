@@ -1,60 +1,51 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Inicio</ion-title>
+        <ion-title>
+            <h4>Inicio</h4>
+        </ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
-    </ion-searchbar>
     <ion-row>
-        <ion-row></ion-row>
-        <h2>Hoteles</h2>
+        <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+    </ion-row>
+    <hr>
+    <ion-row>
+        <ion-card (click)="goToHotels()">
+            <ion-item>
+                <h2>Hoteles</h2>
+                <ion-icon name="arrow-forward" item-end></ion-icon>
+            </ion-item>
+        </ion-card>
         <ion-slides>
             <ion-slide>
                 <ion-card>
-                    <img src="" width="300" height="80" />
-                    <ion-card-content>
-                        <ion-card-title>
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                    <ion-card-content no-padding>
+                        <ion-card-title no-padding padding-top>
                             Hotel Los Corales
                         </ion-card-title>
                         <p>
-                            El mejor hotel de Tumaco, servicio como en casa.
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-slide>
-            <ion-slide>
-                <ion-card>
-                    <img src="" width="80" height="80" />
-                    <ion-card-content>
-                        <ion-card-title>
-                            Hotel La Red
-                        </ion-card-title>
-                        <p>
-                            El mejor hotel de Tumaco, servicio como en casa.
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-slide>
-            <ion-slide>
-                <ion-card>
-                    <img src="" width="80" height="80" />
-                    <ion-card-content>
-                        <ion-card-title>
-                            Hotel El Morro
-                        </ion-card-title>
-                        <p>
-                            Hotel de Tumaco, servicio como en casa.
+                            El mejor Hotel de Tumaco, servicio como en casa.
                         </p>
                     </ion-card-content>
                 </ion-card>
             </ion-slide>
         </ion-slides>
-        <h2>Restaurantes</h2>
+    </ion-row>
+    <hr>
+    <ion-row>
+        <ion-card (click)="goToRestaurants()">
+            <ion-item>
+                <h2>Restaurantes</h2>
+                <ion-icon name="arrow-forward" item-end></ion-icon>
+            </ion-item>
+        </ion-card>
         <ion-slides>
             <ion-slide>
                 <ion-card>
-                    <img src="" width="300" height="80" />
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
                             Restaurante Los Corales
@@ -67,10 +58,10 @@
             </ion-slide>
             <ion-slide>
                 <ion-card>
-                    <img src="" width="80" height="80" />
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
-                            Hotel La Red
+                            Restaurante La Red
                         </ion-card-title>
                         <p>
                             El mejor restaurante de Tumaco, servicio como en casa.
@@ -79,11 +70,19 @@
                 </ion-card>
             </ion-slide>
         </ion-slides>
-        <h2>Lugares Turisticos</h2>
+    </ion-row>
+    <hr>
+    <ion-row>
+        <ion-card (click)="goToTuristicPlaces()">
+            <ion-item>
+                <h2>Lugares Turísticos</h2>
+                <ion-icon name="arrow-forward" item-end></ion-icon>
+            </ion-item>
+        </ion-card>
         <ion-slides>
             <ion-slide>
                 <ion-card>
-                    <img src="" width="300" height="80" />
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
                             Cancha San Judas
@@ -95,14 +94,22 @@
                 </ion-card>
             </ion-slide>
         </ion-slides>
-        <h2>Bares</h2>
+    </ion-row>
+    <hr>
+    <ion-row>
+        <ion-card (click)="goToBars()">
+            <ion-item>
+                <h2>Bares</h2>
+                <ion-icon name="arrow-forward" item-end></ion-icon>
+            </ion-item>
+        </ion-card>
         <ion-slides>
             <ion-slide>
                 <ion-card>
-                    <img src="" width="300" height="80" />
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
-                            bar San Alejo
+                            Bar San Alejo
                         </ion-card-title>
                         <p>
                             El mejor bar de Tumaco

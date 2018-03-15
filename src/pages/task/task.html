@@ -1,12 +1,41 @@
 <ion-header>
-
     <ion-navbar>
-        <ion-title>Tareas</ion-title>
+        <ion-title>
+            <h4>Tareas</h4>
+        </ion-title>
     </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+    <div padding>
+        <button (click)="taskModal()" ion-button block icon-end> 
+            Agregar Tarea
+            <ion-icon name="bookmarks"></ion-icon>
+        </button>
+    </div>
+    <ion-row>
+        <ion-card>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                </ion-avatar>
+                <h2>Tarea 1</h2><small>Descripción de la tarea 1</small>
+                <p>November 5, 2018</p>
+                <button ion-button color="light" icon-only item-end>
+                    <ion-icon name="trash" color="danger"></ion-icon>
+                </button>
+            </ion-item>
+        </ion-card>
+        <ion-card>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                </ion-avatar>
+                <h2>Tarea 2</h2><small>Descripción de la tarea 2</small>
+                <p>Marzo 5, 2018</p>
+                <button ion-button color="light" icon-only item-end>
+                        <ion-icon name="trash" color="danger"></ion-icon>
+                </button>
+            </ion-item>
+        </ion-card>
+    </ion-row>
 </ion-content>

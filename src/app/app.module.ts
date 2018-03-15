@@ -7,7 +7,9 @@ import { MyApp } from './app.component';
 import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
 import { TaskPage } from '../pages/task/task';
+import { TaskModalPage } from '../pages/task-modal/task-modal';
 import { ConfigurationPage } from '../pages/configuration/configuration';
+import { ConfigurationAboutPage } from '../pages/configuration-about/configuration-about';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -19,7 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MapPage,
     HomePage,
     TaskPage,
+    TaskModalPage,
     ConfigurationPage,
+    ConfigurationAboutPage,
     TabsPage
   ],
   imports: [
@@ -32,7 +36,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MapPage,
     HomePage,
     TaskPage,
+    TaskModalPage,
     ConfigurationPage,
+    ConfigurationAboutPage,
     TabsPage
   ],
   providers: [
