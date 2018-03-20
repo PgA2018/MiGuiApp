@@ -20,8 +20,11 @@ import { ExpandableComponent } from '../components/expandable/expandable';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HomeProvider } from '../providers/home/home';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    Ionic2RatingModule
+    Ionic2RatingModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,7 +66,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HomeProvider
   ]
 })
 export class AppModule {}

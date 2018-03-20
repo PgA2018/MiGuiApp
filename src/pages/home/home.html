@@ -21,19 +21,17 @@
             </button>
         </ion-card>
         <ion-slides>
-            <ion-slide>
+            <ion-slide *ngFor="let hotel of hotels">
                 <ion-card (click)="goToPlace()">
-                    <button ion-item>
-                        <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
-                        <ion-card-content>
-                            <ion-card-title>
-                                Hotel Los Corales
-                            </ion-card-title>
-                            <p>
-                                El mejor Hotel de Tumaco, servicio como en casa.
-                            </p>
-                        </ion-card-content>
-                    </button>
+                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            {{hotel.nombre}}
+                        </ion-card-title>
+                        <p>
+                            {{hotel.descripcion}}
+                        </p>
+                    </ion-card-content>
                 </ion-card>
             </ion-slide>
         </ion-slides>
