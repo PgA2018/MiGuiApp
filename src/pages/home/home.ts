@@ -15,6 +15,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public homeProvider: HomeProvider) {}
 
   ionViewDidLoad(){
+    console.log('ionViewDidLoad HomePage');
     this.getHotels();
   }
 
@@ -26,8 +27,10 @@ export class HomePage {
     });
   }
 
-  goToList(){
-    this.navCtrl.push(HomePlacesListPage)
+  goToList(id){
+    this.navCtrl.push(HomePlacesListPage,{
+      id: id
+    })
   }
   
   goToPlace(){
