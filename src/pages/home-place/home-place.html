@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Nombre del lugar</ion-title>
+        <ion-title *ngFor="let p of place"> {{ p.nombre }} </ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -17,13 +17,17 @@
             </ion-slide>
         </ion-slides>
     </ion-row>
-    <ion-card>
+    <ion-card *ngFor="let p of place">
         <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
-            <h2>Descripción muy buena del lugar</h2>
+            <h2> {{ p.descripcion }} </h2>
+            
             <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
-                    <hr>
+                <hr>
                 <h3>Contacto</h3>
-                <p>Telefono: 312312</p>
+                <!--div *ngFor="let t of p">
+                        <p>Telefono: {{t.Telefonos}} </p>
+                </div-->
+                
                 <p>Correo: lugar@lugar.com</p>
             </expandable>
         </button>

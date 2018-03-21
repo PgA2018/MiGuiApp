@@ -4,11 +4,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HomePlacesListProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello HomePlacesListProvider Provider');
-  }
+  constructor(public http: HttpClient) {}
 
-  apiUrl = 'http://192.168.0.102:3000/drgapi/';
+  apiUrl = 'http://localhost:3000/drgapi/';
 
   /**
    * Esta funcion llama la lista de hoteles del api
@@ -53,5 +51,4 @@ export class HomePlacesListProvider {
       });
     });
   }
-
 }

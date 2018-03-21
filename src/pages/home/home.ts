@@ -23,7 +23,6 @@ export class HomePage {
     this.homeProvider.getHotels()
     .then(data => {
       this.hotels = data;
-      console.log(this.hotels);
     });
   }
 
@@ -33,7 +32,9 @@ export class HomePage {
     })
   }
   
-  goToPlace(){
-    this.navCtrl.push(HomePlacePage);
+  goToPlace(id){
+    this.navCtrl.push(HomePlacePage,{
+      id: id
+    });
   }
 }

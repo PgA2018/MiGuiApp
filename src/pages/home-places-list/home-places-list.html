@@ -4,7 +4,11 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <ion-list *ngFor="let l of list">
+    <ion-searchbar [(ngModel)]="busqueda" (ionInput)="filtrarLista()"></ion-searchbar>
+    <div class="hr-padding">
+        <hr>
+    </div>
+    <ion-list *ngFor="let l of listSearch">
         <ion-card (click)="goToPlace()">
             <ion-item>
                 <ion-avatar item-start>

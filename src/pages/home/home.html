@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content padding>
     <ion-row>
-        <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+        <ion-searchbar [(ngModel)]="busqueda" [showCancelButton]="shouldShowCancel" (ionInput)="setFilteredItems()" (ionCancel)="onCancel($event)">
         </ion-searchbar>
     </ion-row>
     <div class="hr-padding">
@@ -22,7 +22,7 @@
         </ion-card>
         <ion-slides>
             <ion-slide *ngFor="let hotel of hotels">
-                <ion-card (click)="goToPlace()">
+                <ion-card (click)="goToPlace(hotel.id)">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>

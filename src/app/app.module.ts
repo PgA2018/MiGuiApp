@@ -24,8 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { HomeProvider } from '../providers/home/home';
 import { HomePlacesListProvider } from '../providers/home-places-list/home-places-list';
+import { FilterByNameProvider } from '../providers/filter-by-name/filter-by-name';
+import { HomePlaceProvider } from '../providers/home-place/home-place';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,9 @@ import { HomePlacesListProvider } from '../providers/home-places-list/home-place
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HomeProvider,
-    HomePlacesListProvider
+    HomePlacesListProvider,
+    FilterByNameProvider,
+    HomePlaceProvider
   ]
 })
 export class AppModule {}

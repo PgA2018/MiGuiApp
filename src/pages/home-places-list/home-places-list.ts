@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePlacePage } from '../home-place/home-place';
 import { HomePlacesListProvider } from '../../providers/home-places-list/home-places-list';
+import { FilterByNameProvider } from '../../providers/filter-by-name/filter-by-name';
 
 @IonicPage()
 @Component({
@@ -11,13 +12,14 @@ import { HomePlacesListProvider } from '../../providers/home-places-list/home-pl
 export class HomePlacesListPage {
 
   list;
+  listSearch;
   title: string;
+  busqueda: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public homePlacesListProvider: HomePlacesListProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public homePlacesList: HomePlacesListProvider, public filerByName : FilterByNameProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePlacesListPage');
     let id = this.navParams.get('id');
     if(id === 1){
       this.title = 'Hoteles';
@@ -35,39 +37,42 @@ export class HomePlacesListPage {
   }
 
   getHotelList(){
-    this.homePlacesListProvider.getHotelList()
+    this.homePlacesList.getHotelList()
     .then(data => {
       this.list = data;
-      console.log(this.list);
+      this.listSearch = this.list;
     });
   }
 
   getRestaurantList(){
-    this.homePlacesListProvider.getRestaurantList()
+    this.homePlacesList.getRestaurantList()
     .then(data => {
       this.list = data;
-      console.log(this.list);
+      this.listSearch = this.list;
     });
   }
 
   getPlaceList(){
-    this.homePlacesListProvider.getPlaceList()
+    this.homePlacesList.getPlaceList()
     .then(data => {
       this.list = data;
-      console.log(this.list);
+      this.listSearch = this.list;
     });
   }
 
   getBarList(){
-    this.homePlacesListProvider.getBarList()
+    this.homePlacesList.getBarList()
     .then(data => {
       this.list = data;
-      console.log(this.list);
+      this.listSearch = this.list;
     });
+  }
+
+  filtrarLista() {
+    this.listSearch = this.filerByName.filtro(this.list, this.busqueda);
   }
 
   goToPlace(){
     this.navCtrl.push(HomePlacePage);
   }
-
 }
