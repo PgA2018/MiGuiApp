@@ -47,15 +47,15 @@
             </ion-item>
         </ion-card>
         <ion-slides>
-            <ion-slide>
+            <ion-slide *ngFor="let restaurant of restaurants">
                 <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
-                            Restaurante Los Corales
+                            {{restaurant.nombre}}
                         </ion-card-title>
                         <p>
-                            El mejor restaurante de Tumaco, servicio como asdasdaden casa.
+                            {{restaurant.descripcion}}
                         </p>
                     </ion-card-content>
                 </ion-card>
@@ -73,15 +73,15 @@
             </ion-item>
         </ion-card>
         <ion-slides>
-            <ion-slide>
-                <ion-card>
+            <ion-slide *ngFor="let turistplace of turistplaces">
+                <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
-                            Cancha San Judas
+                            {{turistplace.nombre}}
                         </ion-card-title>
                         <p>
-                            La Cancha San Judas
+                            {{turistplace.descripcion}}
                         </p>
                     </ion-card-content>
                 </ion-card>
@@ -100,14 +100,14 @@
         </ion-card>
         <ion-slides>
             <ion-slide>
-                <ion-card>
+                <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
-                            Bar San Alejo
+                            <!-- {{pub.nombre}} -->
                         </ion-card-title>
                         <p>
-                            El mejor bar de Tumaco
+                            <!-- {{pub.descripcion}} -->
                         </p>
                     </ion-card-content>
                 </ion-card>

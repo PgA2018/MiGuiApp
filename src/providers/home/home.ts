@@ -16,11 +16,47 @@ export class HomeProvider {
     console.log('Hello HomeProvider Provider');
   }
 
-  apiUrl = 'http://192.168.0.102:3000/drgapi/';
+  apiUrl = 'http://192.168.0.103:3000/drgapi/';
 
-  getHotels() {
+  /**
+   * esto es para algo
+   * @author Cristian Daza
+   * @returns algo
+   */
+
+  getHotelTop() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'lugartophotel').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getRestaurantTop() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'lugartoprestaurante').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getTuristPlaceTop() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'lugartoplugar').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getPubTop() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'lugartopbar').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
