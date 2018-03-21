@@ -11,25 +11,55 @@ import { HomeProvider } from '../../providers/home/home';
 export class HomePage {
 
   hotels;
+  restaurants;
+  turistplaces;
+  pubs;
 
   constructor(public navCtrl: NavController, public homeProvider: HomeProvider) {}
 
   ionViewDidLoad(){
-    console.log('ionViewDidLoad HomePage');
-    this.getHotels();
+    this.getHotel();
+    this.getRestaurant();
+    this.getTuristPlace();
+    this.getPub();
+
   }
 
-  getHotels(){
-    this.homeProvider.getHotels()
+  getHotel(){
+    this.homeProvider.getHotelTop()
     .then(data => {
       this.hotels = data;
+    });
+  }
+
+  getRestaurant(){
+    this.homeProvider.getRestaurantTop()
+    .then(data => {
+      this.restaurants = data;
+      console.log(this.restaurants);
+    });
+  }
+
+  getTuristPlace(){
+    this.homeProvider.getTuristPlaceTop()
+    .then(data => {
+      this.turistplaces = data;
+      console.log(this.turistplaces);
+    });
+  }
+
+  getPub(){
+    this.homeProvider.getPubTop()
+    .then(data => {
+      this.pubs = data;
+      console.log(this.pubs);
     });
   }
 
   goToList(id){
     this.navCtrl.push(HomePlacesListPage,{
       id: id
-    })
+    });
   }
   
   goToPlace(id){
