@@ -22,6 +22,7 @@ export class HomePage {
     this.getRestaurant();
     this.getTuristPlace();
     this.getPub();
+
   }
 
   getHotel(){
@@ -56,8 +57,10 @@ export class HomePage {
     });
   }
 
-  goToList(){
-    this.navCtrl.push(HomePlacesListPage)
+  goToList(id){
+    this.navCtrl.push(HomePlacesListPage,{
+      id: id
+    });
   }
   
   goToPlace(){

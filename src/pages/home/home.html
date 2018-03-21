@@ -14,11 +14,11 @@
         <hr>
     </div>
     <ion-row>
-        <ion-card (click)="goToList()">
-            <button ion-item>
+        <ion-card (click)="goToList(1)">
+            <ion-item>
                 <h2>Hoteles</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
-            </button>
+            </ion-item>
         </ion-card>
         <ion-slides>
             <ion-slide *ngFor="let hotel of hotels">
@@ -40,7 +40,7 @@
         <hr>
     </div>
     <ion-row>
-        <ion-card (click)="goToList()">
+        <ion-card (click)="goToList(2)">
             <ion-item>
                 <h2>Restaurantes</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
@@ -66,14 +66,18 @@
         <hr>
     </div>
     <ion-row>
-        <ion-card (click)="goToList()">
+        <ion-card (click)="goToList(3)">
             <ion-item>
                 <h2>Lugares Turísticos</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
             </ion-item>
         </ion-card>
         <ion-slides>
+<<<<<<< HEAD
             <ion-slide *ngFor="let turistplace of turistplaces">
+=======
+            <ion-slide>
+>>>>>>> b297101ad8b975c26a80fc5864afce1d485a099e
                 <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
@@ -92,7 +96,7 @@
         <hr>
     </div>
     <ion-row>
-        <ion-card (click)="goToList()">
+        <ion-card (click)="goToList(4)">
             <ion-item>
                 <h2>Bares</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
