@@ -22,7 +22,6 @@ export class HomePage {
     this.getRestaurant();
     this.getTuristPlace();
     this.getPub();
-
   }
 
   getHotel(){

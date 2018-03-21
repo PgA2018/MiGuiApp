@@ -99,7 +99,7 @@
             </ion-item>
         </ion-card>
         <ion-slides>
-            <ion-slide>
+            <ion-slide *ngFor="let pub of pubs">
                 <ion-card (click)="goToPlace()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>

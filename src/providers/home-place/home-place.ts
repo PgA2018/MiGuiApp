@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class HomePlaceProvider {
 
   constructor(public http: HttpClient) {}
-  apiUrl = 'http://localhost:3000/drgapi/lugar/';
+  apiUrl = 'http://192.168.0.103:3000/drgapi/lugar/';
 
   /**
    * Esta funcion llama un lugar de la api

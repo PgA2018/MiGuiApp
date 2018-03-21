@@ -6,7 +6,7 @@ export class HomePlacesListProvider {
 
   constructor(public http: HttpClient) {}
 
-  apiUrl = 'http://localhost:3000/drgapi/';
+  apiUrl = 'http://192.168.0.103:3000/drgapi/';
 
   /**
    * Esta funcion llama la lista de hoteles del api

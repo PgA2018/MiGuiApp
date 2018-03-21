@@ -12,7 +12,7 @@ export class HomeProvider {
 
   constructor(public http: HttpClient) {}
 
-  apiUrl = 'http://localhost:3000/drgapi/';
+  apiUrl = 'http://192.168.0.103:3000/drgapi/';
 
   /**
    * esto es para algo
