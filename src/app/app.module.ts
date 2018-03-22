@@ -17,6 +17,8 @@ import { ConfigurationAboutPage } from '../pages/configuration-about/configurati
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { ExpandableComponent } from '../components/expandable/expandable';
+import { TruncatedTextComponent } from '../components/truncated-text/truncated-text';
+import { TruncateModule } from 'ng2-truncate';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 
@@ -29,6 +31,9 @@ import { HomeProvider } from '../providers/home/home';
 import { HomePlacesListProvider } from '../providers/home-places-list/home-places-list';
 import { FilterByNameProvider } from '../providers/filter-by-name/filter-by-name';
 import { HomePlaceProvider } from '../providers/home-place/home-place';
+import { HomeServicesListProvider } from '../providers/home-services-list/home-services-list';
+import { HomeServiceProvider } from '../providers/home-service/home-service';
+
 
 @NgModule({
   declarations: [
@@ -44,13 +49,15 @@ import { HomePlaceProvider } from '../providers/home-place/home-place';
     ConfigurationPage,
     ConfigurationAboutPage,
     TabsPage,
-    ExpandableComponent
+    ExpandableComponent,
+    TruncatedTextComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     Ionic2RatingModule,
-    HttpClientModule
+    HttpClientModule,
+    TruncateModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -74,7 +81,9 @@ import { HomePlaceProvider } from '../providers/home-place/home-place';
     HomeProvider,
     HomePlacesListProvider,
     FilterByNameProvider,
-    HomePlaceProvider
+    HomePlaceProvider,
+    HomeServicesListProvider,
+    HomeServiceProvider
   ]
 })
 export class AppModule {}

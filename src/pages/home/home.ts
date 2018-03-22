@@ -4,6 +4,7 @@ import { HomePlacesListPage } from '../home-places-list/home-places-list';
 import { HomePlacePage } from '../home-place/home-place';
 import { HomeProvider } from '../../providers/home/home';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

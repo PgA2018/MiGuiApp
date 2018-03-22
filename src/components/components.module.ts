@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ExpandableComponent } from './expandable/expandable';
+import { TruncatedTextComponent } from './truncated-text/truncated-text';
 @NgModule({
-	declarations: [ExpandableComponent],
+	declarations: [ExpandableComponent,
+    TruncatedTextComponent],
 	imports: [],
-	exports: [ExpandableComponent]
+	exports: [ExpandableComponent,
+    TruncatedTextComponent]
 })
 export class ComponentsModule {}

@@ -4,7 +4,6 @@ import { HomeServicePage } from '../home-service/home-service';
 import { HomeServicesListPage } from '../home-services-list/home-services-list';
 import { HomePlaceProvider } from '../../providers/home-place/home-place';
 
-
 @IonicPage()
 @Component({
   selector: 'page-home-place',
@@ -13,17 +12,16 @@ import { HomePlaceProvider } from '../../providers/home-place/home-place';
 export class HomePlacePage {
 
     place: object = null;
-    places;
     itemExpandHeight: number = 120;
     items: any = [];
     rate: number = 3;
+    truncating = true;
     
     constructor(public navCtrl: NavController, public navParams: NavParams, public homePlace: HomePlaceProvider) {}
 
     ionViewDidLoad() {
         this.items = [{expanded: false}];
         this.getPlace(this.navParams.get('id'));
-        
     }
 
     getPlace(ide){
@@ -42,12 +40,17 @@ export class HomePlacePage {
             }
             return listItem;
         });
+        this.truncating = !this.truncating;
     }
     
-    goToService(){
-        this.navCtrl.push(HomeServicePage);
+    goToService(id){
+        this.navCtrl.push(HomeServicePage,{
+            id: id
+        });
     }
-    goToServicesList(){
-        this.navCtrl.push(HomeServicesListPage);
+    goToServicesList(id){
+        this.navCtrl.push(HomeServicesListPage,{
+            id: id
+        });
     }   
 }

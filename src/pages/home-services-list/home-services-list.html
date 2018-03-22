@@ -1,8 +1,22 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Lista de servicios</ion-title>
+        <ion-title>{{ title }}</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-
+    <ion-searchbar [(ngModel)]="busqueda" (ionInput)="filtrarLista()"></ion-searchbar>
+    <div class="hr-padding">
+        <hr>
+    </div>
+    <ion-list *ngFor="let l of listSearch">
+        <ion-card (click)="goToService(l.id)">
+            <ion-item>
+                <ion-avatar item-start *ngFor="let foto of l.FotoServicios">
+                    <img src="{{foto.url}}" />
+                </ion-avatar>
+                <h2> {{l.nombre}} </h2><small> {{l.descripcion}} </small>
+                <ion-icon item-end name="arrow-forward"></ion-icon>
+            </ion-item>
+        </ion-card>
+    </ion-list>
 </ion-content>

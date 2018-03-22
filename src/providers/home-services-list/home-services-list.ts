@@ -3,18 +3,21 @@ import { Injectable } from '@angular/core';
 import { apiUrl } from '../conf';
 
 @Injectable()
-export class HomePlaceProvider {
+export class HomeServicesListProvider {
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+    console.log('Hello HomeServicesListProvider Provider');
+  }
+
   apiUrl = apiUrl;
 
   /**
-   * Esta funcion llama un lugar de la api
+   * Esta funcion llama la lista de hoteles del api
    * @params
    */
-  getPlace(id) {
+  getServiceList(id) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'lugarbusqueda/'+id).subscribe(data => {
+      this.http.get(this.apiUrl+'serviciolista/'+id).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

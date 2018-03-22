@@ -1,0 +1,11 @@
+<div *ngIf="text" (click)="truncating = !truncating">
+    <div *ngIf="text.length <= limit">{{text}}</div>
+    <div *ngIf="truncating && text.length > limit">
+        <h2>{{text | truncate : limit}}</h2>
+        <!--button ion-button (click)="truncating = false">show more</button-->
+    </div>
+    <div *ngIf="!truncating && text.length > limit">
+        <h2>{{text}}</h2>
+        <!--button ion-button (click)="truncating = true">show less</button-->
+    </div>
+</div>

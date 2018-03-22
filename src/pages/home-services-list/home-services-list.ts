@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HomeServicesListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomeServicesListProvider } from '../../providers/home-services-list/home-services-list';
+import { FilterByNameProvider } from '../../providers/filter-by-name/filter-by-name';
+import { HomeServicePage } from '../home-service/home-service';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomeServicesListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  list;
+  listSearch;
+  title: string;
+  busqueda: string = '';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public homeServicesList: HomeServicesListProvider, public filerByName : FilterByNameProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomeServicesListPage');
+    this.getServiceList(this.navParams.get('id'));
   }
+
+  getServiceList(id){
+    this.homeServicesList.getServiceList(id)
+    .then(data => {
+      this.list = data;
+      this.listSearch = this.list;
+      console.log(this.list);
+    });
+  }
+  filtrarLista() {
+    this.listSearch = this.filerByName.filtro(this.list, this.busqueda);
+  }
+  goToService(id){
+    this.navCtrl.push(HomeServicePage,{
+      id: id
+    });
+}
 
 }

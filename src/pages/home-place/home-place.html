@@ -7,22 +7,28 @@
     <ion-row>
         <ion-slides *ngFor="let p of place">
             <ion-slide *ngFor="let f of p.FotoLugars">
-                <img src="{{f.url}}" />
+                <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
+                <!--img src="{{f.url}}" /-->
             </ion-slide>
+            <div class="top-right" *ngFor="let c of p.Calificacions">
+                <rating item-start [(ngModel)]="c.promedio" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+                </rating>
+            </div>
         </ion-slides>
     </ion-row>
     <ion-card *ngFor="let p of place">
-        <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
-            <h2> {{ p.descripcion }} </h2>
+
+        <div text-wrap detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
+            <truncated-text [text]="p.descripcion" [limit]="45" [truncating]="truncating"></truncated-text>
             <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
                 <hr>
                 <h3>Contacto</h3>
                 <div *ngFor="let t of p.Telefonos">
-                        <p>Telefono: {{t.numero}} </p>
+                    <p>Telefono: {{t.numero}} </p>
                 </div>
                 <p>Correo: lugar@lugar.com</p>
             </expandable>
-        </button>
+        </div>
     </ion-card>
     <ion-card>
         <ion-item>
@@ -36,7 +42,7 @@
         <hr>
     </div>
     <ion-row>
-        <ion-card (click)="goToServicesList()">
+        <ion-card *ngFor="let p of place" (click)="goToServicesList(p.id)">
             <ion-item>
                 <h2>Servicios</h2>
                 <ion-icon name="arrow-forward" item-end></ion-icon>
@@ -44,14 +50,17 @@
         </ion-card>
         <ion-slides *ngFor="let p of place">
             <ion-slide *ngFor="let s of p.Servicios">
-                <ion-card (click)="goToService()">
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                <ion-card (click)="goToService(s.id)">
+                    <div *ngFor="let f of s.FotoServicios">
+                        <div class="img-div-serv" [style.backgroundImage]="'url('+ f.url +')'"></div>
+                    </div>
                     <ion-card-content>
                         <ion-card-title>
-                            {{ s.nombre }}
+                            <h2>{{ s.nombre }}</h2>
+
                         </ion-card-title>
                         <p>
-                            {{ s.descripcion }}
+                            {{ s.descripcion | truncate : 50}}
                         </p>
                     </ion-card-content>
                 </ion-card>
