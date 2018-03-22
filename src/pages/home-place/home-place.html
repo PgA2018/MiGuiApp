@@ -5,29 +5,21 @@
 </ion-header>
 <ion-content padding>
     <ion-row>
-        <ion-slides>
-            <ion-slide>
-                <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
-            </ion-slide>
-            <ion-slide>
-                <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
-            </ion-slide>
-            <ion-slide>
-                <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+        <ion-slides *ngFor="let p of place">
+            <ion-slide *ngFor="let f of p.FotoLugars">
+                <img src="{{f.url}}" />
             </ion-slide>
         </ion-slides>
     </ion-row>
     <ion-card *ngFor="let p of place">
         <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
             <h2> {{ p.descripcion }} </h2>
-            
             <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
                 <hr>
                 <h3>Contacto</h3>
-                <!--div *ngFor="let t of p">
-                        <p>Telefono: {{t.Telefonos}} </p>
-                </div-->
-                
+                <div *ngFor="let t of p.Telefonos">
+                        <p>Telefono: {{t.numero}} </p>
+                </div>
                 <p>Correo: lugar@lugar.com</p>
             </expandable>
         </button>
@@ -50,16 +42,16 @@
                 <ion-icon name="arrow-forward" item-end></ion-icon>
             </ion-item>
         </ion-card>
-        <ion-slides>
-            <ion-slide>
+        <ion-slides *ngFor="let p of place">
+            <ion-slide *ngFor="let s of p.Servicios">
                 <ion-card (click)="goToService()">
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                     <ion-card-content>
                         <ion-card-title>
-                            Hamburguesa Casera
+                            {{ s.nombre }}
                         </ion-card-title>
                         <p>
-                            La mejor hamburguesa, rico como en casa.
+                            {{ s.descripcion }}
                         </p>
                     </ion-card-content>
                 </ion-card>

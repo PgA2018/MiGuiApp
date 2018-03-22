@@ -23,7 +23,9 @@
         <ion-slides>
             <ion-slide *ngFor="let hotel of hotels">
                 <ion-card (click)="goToPlace(hotel.id)">
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                    <div *ngFor="let foto of hotel.FotoLugars">
+                        <img src="{{foto.url}}">
+                    </div>
                     <ion-card-content>
                         <ion-card-title>
                             {{hotel.nombre}}
@@ -48,8 +50,10 @@
         </ion-card>
         <ion-slides>
             <ion-slide *ngFor="let restaurant of restaurants">
-                <ion-card (click)="goToPlace()">
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                <ion-card (click)="goToPlace(restaurant.id)">
+                    <div *ngFor="let foto of restaurant.FotoLugars">
+                        <img src="{{foto.url}}">
+                    </div>
                     <ion-card-content>
                         <ion-card-title>
                             {{restaurant.nombre}}
@@ -74,8 +78,10 @@
         </ion-card>
         <ion-slides>
             <ion-slide *ngFor="let turistplace of turistplaces">
-                <ion-card (click)="goToPlace()">
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                <ion-card (click)="goToPlace(turistplace.id)">
+                    <div *ngFor="let foto of turistplace.FotoLugars">
+                        <img src="{{foto.url}}">
+                    </div>
                     <ion-card-content>
                         <ion-card-title>
                             {{turistplace.nombre}}
@@ -100,8 +106,10 @@
         </ion-card>
         <ion-slides>
             <ion-slide *ngFor="let pub of pubs">
-                <ion-card (click)="goToPlace()">
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                <ion-card (click)="goToPlace(pub.id)">
+                    <div *ngFor="let foto of pub.FotoLugars">
+                        <img src="{{foto.url}}">
+                    </div>
                     <ion-card-content>
                         <ion-card-title>
                             {{pub.nombre}}

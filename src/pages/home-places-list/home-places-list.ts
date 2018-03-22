@@ -72,7 +72,9 @@ export class HomePlacesListPage {
     this.listSearch = this.filerByName.filtro(this.list, this.busqueda);
   }
 
-  goToPlace(){
-    this.navCtrl.push(HomePlacePage);
+  goToPlace(id){
+    this.navCtrl.push(HomePlacePage,{
+      id: id
+    });
   }
 }

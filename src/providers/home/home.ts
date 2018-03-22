@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { apiUrl } from '../conf';
 
 /*
   Generated class for the HomeProvider provider.
@@ -12,7 +13,7 @@ export class HomeProvider {
 
   constructor(public http: HttpClient) {}
 
-  apiUrl = 'http://192.168.0.103:3000/drgapi/';
+  apiUrl = apiUrl;
 
   /**
    * esto es para algo

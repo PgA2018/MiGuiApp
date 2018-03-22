@@ -23,13 +23,13 @@ export class HomePlacePage {
     ionViewDidLoad() {
         this.items = [{expanded: false}];
         this.getPlace(this.navParams.get('id'));
+        
     }
 
     getPlace(ide){
         this.homePlace.getPlace(ide)
         .then(data => {
             this.place = data;
-            console.log(this.place);
         });
     }
 

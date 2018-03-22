@@ -35,7 +35,8 @@ export class HomePage {
     this.homeProvider.getRestaurantTop()
     .then(data => {
       this.restaurants = data;
-      console.log(this.restaurants);
+      //console.log(this.restaurants[0].FotoLugars[0]);
+      
     });
   }
 
@@ -43,7 +44,6 @@ export class HomePage {
     this.homeProvider.getTuristPlaceTop()
     .then(data => {
       this.turistplaces = data;
-      console.log(this.turistplaces);
     });
   }
 
@@ -51,7 +51,6 @@ export class HomePage {
     this.homeProvider.getPubTop()
     .then(data => {
       this.pubs = data;
-      console.log(this.pubs);
     });
   }
 

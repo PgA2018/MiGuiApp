@@ -9,10 +9,10 @@
         <hr>
     </div>
     <ion-list *ngFor="let l of listSearch">
-        <ion-card (click)="goToPlace()">
+        <ion-card (click)="goToPlace(l.id)">
             <ion-item>
-                <ion-avatar item-start>
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
+                <ion-avatar item-start *ngFor="let foto of l.FotoLugars">
+                    <img src="{{foto.url}}" />
                 </ion-avatar>
                 <h2> {{l.nombre}} </h2><small> {{l.descripcion}} </small>
                 <ion-icon item-end name="arrow-forward"></ion-icon>

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { apiUrl } from '../conf';
 
 @Injectable()
 export class HomePlacesListProvider {
 
   constructor(public http: HttpClient) {}
 
-  apiUrl = 'http://192.168.0.103:3000/drgapi/';
+  apiUrl = apiUrl;
 
   /**
    * Esta funcion llama la lista de hoteles del api

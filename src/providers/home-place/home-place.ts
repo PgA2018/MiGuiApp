@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { apiUrl } from '../conf';
 
 /*
   Generated class for the HomePlaceProvider provider.
@@ -11,7 +12,7 @@ import { Injectable } from '@angular/core';
 export class HomePlaceProvider {
 
   constructor(public http: HttpClient) {}
-  apiUrl = 'http://192.168.0.103:3000/drgapi/lugar/';
+  apiUrl = apiUrl;
 
   /**
    * Esta funcion llama un lugar de la api
@@ -19,7 +20,7 @@ export class HomePlaceProvider {
    */
   getPlace(id) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+id).subscribe(data => {
+      this.http.get(this.apiUrl+'lugarbusqueda/'+id).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
