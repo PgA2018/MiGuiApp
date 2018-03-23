@@ -4,50 +4,36 @@ import { SignupPage } from '../signup/signup';
 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
-import { UserModel } from '../../models/user-model';
 import { TabsPage } from '../tabs/tabs';
-import { PasswordRecoverPage } from '../password-recover/password-recover';
 
 @IonicPage()
 @Component({
-  selector: 'page-signin',
-  templateUrl: 'signin.html',
+  selector: 'page-password-recover',
+  templateUrl: 'password-recover.html',
 })
-export class SigninPage {
+export class PasswordRecoverPage {
 
-    userModel: UserModel;
+    email:string;
+    
 
-    constructor(
-        public navCtrl: NavController,
-        public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController,
-        public authServiceProvider: AuthServiceProvider) {
-        this.userModel = new UserModel();
-    }
+constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,public alertCtrl: AlertController,public authServiceProvider: AuthServiceProvider) {
+}
 
-    signIn() {
+    resetPass() {
         let loading = this.loadingCtrl.create({
-            content: 'Iniciando sesión. Por favor, espere...'
+            content: 'Enviando correo de recuperación. Por favor, espere...'
         });
         loading.present();
 
-        this.authServiceProvider.signInWithEmailAndPassword(this.userModel).then(result => {
+        this.authServiceProvider.resetPassword(this.email).then(result => {
             loading.dismiss();
-
-            this.navCtrl.setRoot(TabsPage);
+            this.navCtrl.pop();
         }).catch(error => {
             loading.dismiss();
 
             console.log(error);
             this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
         });
-    }
-
-    signUp() {
-        this.navCtrl.push(SignupPage);
-    }
-    recoverPassword(){
-        this.navCtrl.push(PasswordRecoverPage);
     }
 
     alert(title: string, message: string) {

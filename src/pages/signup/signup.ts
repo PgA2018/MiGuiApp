@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
-
-
+import { IonicPage, NavController, LoadingController, AlertController } from 'ionic-angular';
 
 import { UserModel } from '../../models/user-model';
 

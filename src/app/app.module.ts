@@ -38,6 +38,7 @@ import { HomePlaceProvider } from '../providers/home-place/home-place';
 import { HomeServicesListProvider } from '../providers/home-services-list/home-services-list';
 import { HomeServiceProvider } from '../providers/home-service/home-service';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { PasswordRecoverPage } from '../pages/password-recover/password-recover';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
@@ -63,6 +64,7 @@ export const firebaseConfig = {
     ConfigurationAboutPage,
     SigninPage,
     SignupPage,
+    PasswordRecoverPage,
     TabsPage,
     ExpandableComponent,
     TruncatedTextComponent
@@ -87,6 +89,7 @@ export const firebaseConfig = {
     HomeServicesListPage,
     SigninPage,
     SignupPage,
+    PasswordRecoverPage,
     TaskPage,
     TaskModalPage,
     ConfigurationPage,
