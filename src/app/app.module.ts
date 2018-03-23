@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-
+// PAGINAS
 import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
 import { HomePlacePage } from '../pages/home-place/home-place';
@@ -14,26 +14,39 @@ import { TaskPage } from '../pages/task/task';
 import { TaskModalPage } from '../pages/task-modal/task-modal';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 import { ConfigurationAboutPage } from '../pages/configuration-about/configuration-about';
+import { SigninPage } from '../pages/signin/signin';
+import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-
+// COMPONENTES
 import { ExpandableComponent } from '../components/expandable/expandable';
 import { TruncatedTextComponent } from '../components/truncated-text/truncated-text';
+// MODULOS
 import { TruncateModule } from 'ng2-truncate';
-
 import { Ionic2RatingModule } from 'ionic2-rating';
-
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+//PROVIDERS
 import { HomeProvider } from '../providers/home/home';
 import { HomePlacesListProvider } from '../providers/home-places-list/home-places-list';
 import { FilterByNameProvider } from '../providers/filter-by-name/filter-by-name';
 import { HomePlaceProvider } from '../providers/home-place/home-place';
 import { HomeServicesListProvider } from '../providers/home-services-list/home-services-list';
 import { HomeServiceProvider } from '../providers/home-service/home-service';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
+  authDomain: "turistapp-95698.firebaseapp.com",
+  databaseURL: "https://turistapp-95698.firebaseio.com",
+  projectId: "turistapp-95698",
+  storageBucket: "turistapp-95698.appspot.com",
+  messagingSenderId: "170098729848"
+};
 
 @NgModule({
   declarations: [
@@ -48,6 +61,8 @@ import { HomeServiceProvider } from '../providers/home-service/home-service';
     TaskModalPage,
     ConfigurationPage,
     ConfigurationAboutPage,
+    SigninPage,
+    SignupPage,
     TabsPage,
     ExpandableComponent,
     TruncatedTextComponent
@@ -57,7 +72,9 @@ import { HomeServiceProvider } from '../providers/home-service/home-service';
     IonicModule.forRoot(MyApp),
     Ionic2RatingModule,
     HttpClientModule,
-    TruncateModule
+    TruncateModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,6 +85,8 @@ import { HomeServiceProvider } from '../providers/home-service/home-service';
     HomePlacesListPage,
     HomeServicePage,
     HomeServicesListPage,
+    SigninPage,
+    SignupPage,
     TaskPage,
     TaskModalPage,
     ConfigurationPage,
@@ -83,7 +102,8 @@ import { HomeServiceProvider } from '../providers/home-service/home-service';
     FilterByNameProvider,
     HomePlaceProvider,
     HomeServicesListProvider,
-    HomeServiceProvider
+    HomeServiceProvider,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}

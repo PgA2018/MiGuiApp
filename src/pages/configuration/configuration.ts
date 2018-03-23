@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ConfigurationAboutPage } from '../configuration-about/configuration-about';
+import { SigninPage } from '../signin/signin';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -9,14 +11,15 @@ import { ConfigurationAboutPage } from '../configuration-about/configuration-abo
 })
 export class ConfigurationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfigurationPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider) {
   }
 
   goToAbout(){
     this.navCtrl.push(ConfigurationAboutPage);
+  }
+
+  signOut() {
+    this.authService.signOut();
+    this.navCtrl.setRoot(SigninPage);
   }
 }
