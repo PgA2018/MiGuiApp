@@ -14,7 +14,7 @@ export class HomePlacePage {
     place: object = null;
     itemExpandHeight: number = 120;
     items: any = [];
-    rate: number = 3;
+    rate: number = 0;
     truncating = true;
     
     constructor(public navCtrl: NavController, public navParams: NavParams, public homePlace: HomePlaceProvider) {}

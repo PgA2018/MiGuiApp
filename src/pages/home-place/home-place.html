@@ -6,18 +6,18 @@
 <ion-content padding>
     <ion-row>
         <ion-slides *ngFor="let p of place">
-            <ion-slide *ngFor="let f of p.FotoLugars">
-                <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
-                <!--img src="{{f.url}}" /-->
-            </ion-slide>
-            <div class="top-right" *ngFor="let c of p.Calificacions">
-                <rating item-start [(ngModel)]="c.promedio" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
-                </rating>
-            </div>
+            <ion-card>
+                <ion-slide *ngFor="let f of p.FotoLugars">
+                    <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
+                </ion-slide>
+                <div class="top-right" *ngFor="let c of p.Calificacions">
+                    <rating item-start [(ngModel)]="c.promedio" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+                    </rating>
+                </div>
+            </ion-card>
         </ion-slides>
     </ion-row>
     <ion-card *ngFor="let p of place">
-
         <div text-wrap detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
             <truncated-text [text]="p.descripcion" [limit]="45" [truncating]="truncating"></truncated-text>
             <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
@@ -30,9 +30,10 @@
             </expandable>
         </div>
     </ion-card>
+
     <ion-card>
-        <ion-item>
-            <rating item-start [(ngModel)]="rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+        <ion-item class="padd-left">
+            <rating no-padding item-start [(ngModel)]="rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
             </rating>
             <button no-padding item-end ion-button>Enviar</button>
         </ion-item>

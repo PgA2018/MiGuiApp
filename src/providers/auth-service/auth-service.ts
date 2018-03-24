@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -12,6 +11,7 @@ export class AuthServiceProvider {
   user: User;
 
     constructor(public angularFireAuth: AngularFireAuth) {
+
         angularFireAuth.authState.subscribe((user: User) => {
             this.user = user;
         });
