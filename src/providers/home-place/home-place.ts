@@ -22,4 +22,42 @@ export class HomePlaceProvider {
     });
   }
 
+  obtenerCalificacion(id_lugar, id_usuario) {
+    return new Promise(resolve => {
+      this.http.get(apiUrl+'calificacion/'+id_lugar+'/'+id_usuario).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  calificarLugar(data) {
+    this.http.post(apiUrl+'calificacion', data)
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body", val);
+        },
+        response => {
+            console.log("POST call in error", response);
+        },
+        () => {
+            console.log("The POST observable is now completed.");
+        });
+  }
+
+  actualizarCalificacionLugar(id_lugar, id_usuario, data) {
+    this.http.put(apiUrl+'calificacion/'+id_lugar+'/'+id_usuario, data)
+    .subscribe(
+      val => {
+          console.log("PUT call successful value returned in body", val);
+      },
+      response => {
+          console.log("PUT call in error", response);
+      },
+      () => {
+          console.log("The PUT observable is now completed.");
+      });
+  }
+
 }

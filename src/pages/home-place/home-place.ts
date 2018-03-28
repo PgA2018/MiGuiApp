@@ -20,6 +20,7 @@ export class HomePlacePage {
     truncating = true;
     comentario = '';
     informacionComentario;
+    cali;
     
     constructor(public navCtrl: NavController, 
         public navParams: NavParams, 
@@ -32,6 +33,7 @@ export class HomePlacePage {
     ionViewDidLoad() {
         this.items = [{expanded: false}];
         this.getPlace(this.navParams.get('id'));
+        this.obtenerCalificacion(this.navParams.get('id'));
     }
 
     getPlace(ide){
@@ -79,11 +81,53 @@ export class HomePlacePage {
                 descripcion: this.comentario
             }
             this.commentProvider.agregarComentarioLugar(this.informacionComentario);
+            this.comentario = '';
         } else {
             loading.dismiss();
             this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
         }
-    }   
+    } 
+    
+    obtenerCalificacion(ide){
+        const user = this.authServiceProvider.getCurrentUser();
+        if(user != null){
+            var id_usuario = user.uid;
+        }
+        this.homePlace.obtenerCalificacion(ide, id_usuario)
+        .then(data => {
+            this.cali = data;
+            if(this.cali === null){
+                this.rate = 0;
+            } else {
+                this.rate = this.cali.calificacion;
+            }
+        });
+    }
+
+    calificarLugar(id_lugar){
+        let loading = this.loadingCtrl.create({
+            content: 'Enviando calificacion. Por favor, espere...'
+        });
+        loading.present();
+        const user = this.authServiceProvider.getCurrentUser();
+        if(user != null){
+            loading.dismiss();
+            let informacionCalificacion = {
+                id_lugar: id_lugar,
+                id_usuario: user.uid,
+                calificacion: this.rate
+            }
+            if(this.cali === null){
+                this.homePlace.calificarLugar(informacionCalificacion);
+            } else {
+                this.homePlace.actualizarCalificacionLugar(id_lugar, user.uid, {calificacion: this.rate})
+            }
+            
+        } else {
+            loading.dismiss();
+            this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+        }
+    }
 
     alert(title: string, message: string) {
         let alert = this.alertCtrl.create({

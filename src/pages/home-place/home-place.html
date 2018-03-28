@@ -10,9 +10,8 @@
                 <ion-slide *ngFor="let f of p.FotoLugars">
                     <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
                 </ion-slide>
-                <div class="top-right" *ngFor="let c of p.Calificacions">
-                    <rating item-start [(ngModel)]="c.promedio" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
-                    </rating>
+                <div padding class="top-right" *ngFor="let c of p.Calificacions">
+                    <button ion-button round> {{c.promedio | number:'1.1-1'}} </button>
                 </div>
             </ion-card>
         </ion-slides>
@@ -30,11 +29,11 @@
             </expandable>
         </div>
     </ion-card>
-    <ion-card>
+    <ion-card *ngFor="let p of place">
         <ion-item class="padd-left">
             <rating no-padding item-start [(ngModel)]="rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
             </rating>
-            <button no-padding item-end ion-button>Enviar</button>
+            <button no-padding item-end ion-button (click)="calificarLugar(p.id)">Enviar</button>
         </ion-item>
     </ion-card>
     <br>

@@ -36,8 +36,6 @@ export class HomePage {
     this.homeProvider.getRestaurantTop()
     .then(data => {
       this.restaurants = data;
-      //console.log(this.restaurants[0].FotoLugars[0]);
-      
     });
   }
 
