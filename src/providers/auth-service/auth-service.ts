@@ -35,5 +35,9 @@ export class AuthServiceProvider {
     resetPassword(email): Promise<any>{
         return this.angularFireAuth.auth.sendPasswordResetEmail(email);
     }
+    getCurrentUser(){
+        var user = this.angularFireAuth.auth.currentUser;
+        return user
+    }
 
 }

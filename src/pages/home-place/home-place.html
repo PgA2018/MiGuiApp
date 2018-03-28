@@ -30,7 +30,6 @@
             </expandable>
         </div>
     </ion-card>
-
     <ion-card>
         <ion-item class="padd-left">
             <rating no-padding item-start [(ngModel)]="rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
@@ -39,9 +38,6 @@
         </ion-item>
     </ion-card>
     <br>
-    <div class="hr-padding">
-        <hr>
-    </div>
     <ion-row>
         <ion-card *ngFor="let p of place" (click)="goToServicesList(p.id)">
             <ion-item>
@@ -67,5 +63,22 @@
                 </ion-card>
             </ion-slide>
         </ion-slides>
+    </ion-row>
+    <ion-row>
+        <ion-card *ngFor="let p of place">
+            <ion-item>
+                <ion-input type="text" placeholder="Escribe un comentario" autocomplete="on" [(ngModel)]="comentario" name="title"></ion-input>
+                <button ion-button type="submit" item-end (click)="logForm(p.id)">Enviar</button>
+            </ion-item>
+        </ion-card>
+        <ion-list *ngFor="let p of place">
+            <ion-item *ngFor="let c of p.ComentarioLugars">
+                <ion-avatar item-start>
+                    <img src="../../assets/imgs/user.jpg" />
+                </ion-avatar>
+                <small> {{c.correo_usuario}} </small>
+                <h3> {{c.descripcion}} </h3>
+            </ion-item>
+        </ion-list>
     </ion-row>
 </ion-content>

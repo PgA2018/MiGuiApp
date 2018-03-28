@@ -10,7 +10,6 @@ export class TruncatedTextComponent {
   @Input('truncating') truncating;
 
   constructor() {
-    console.log('Hello TruncatedTextComponent Component');
   }
 
 }

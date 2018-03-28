@@ -39,6 +39,8 @@ import { HomeServicesListProvider } from '../providers/home-services-list/home-s
 import { HomeServiceProvider } from '../providers/home-service/home-service';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { PasswordRecoverPage } from '../pages/password-recover/password-recover';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { CommentsProvider } from '../providers/comments/comments';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
@@ -106,7 +108,9 @@ export const firebaseConfig = {
     HomePlaceProvider,
     HomeServicesListProvider,
     HomeServiceProvider,
-    AuthServiceProvider
+    AuthServiceProvider,
+    GoogleMaps,
+    CommentsProvider,
   ]
 })
 export class AppModule {}

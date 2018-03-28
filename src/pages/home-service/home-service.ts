@@ -10,11 +10,14 @@ import { HomeServiceProvider } from '../../providers/home-service/home-service';
 export class HomeServicePage {
 
   service;
+  itemExpandHeight: number = 120;
+  items: any = [];
+  truncating = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public homeServiceProvider: HomeServiceProvider) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomeServicePage');
+    this.items = [{expanded: false}];
     this.getService(this.navParams.get('id'));
   }
 
@@ -22,8 +25,17 @@ export class HomeServicePage {
     this.homeServiceProvider.getService(id)
     .then(data => {
       this.service = data;
-      console.log(this.service);
     });
   }
-
+  expandItem(item){
+    this.items.map((listItem) => {
+        if(item == listItem){
+            listItem.expanded = !listItem.expanded;
+        } else {
+            listItem.expanded = false;
+        }
+        return listItem;
+    });
+    this.truncating = !this.truncating;
+}
 }

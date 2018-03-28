@@ -38,6 +38,6 @@ export class HomeServicesListPage {
     this.navCtrl.push(HomeServicePage,{
       id: id
     });
-}
+  }
 
 }

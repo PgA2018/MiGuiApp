@@ -1,3 +1,25 @@
-page-home-service {
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
 
+.img-div {
+    height: 200px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.img-div-serv {
+    height: 150px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.padd-left {
+    padding-left: 8px
 }
