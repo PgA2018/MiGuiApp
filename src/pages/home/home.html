@@ -26,7 +26,7 @@
                     <div *ngFor="let foto of hotel.FotoLugars">
                         <div class="img-div" [style.backgroundImage]="'url('+ foto.url +')'"></div>
                     </div>
-                    <div class="top-right" *ngFor="let p of hotel.Calificacions">
+                    <div padding class="top-right" *ngFor="let p of hotel.Calificacions">
                         <button ion-button round> {{p.promedio | number:'1.1-1'}} </button>
                     </div>
                     <ion-card-content>

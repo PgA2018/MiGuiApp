@@ -6,7 +6,6 @@ import { apiUrl } from '../conf';
 export class HomeServiceProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello HomeServiceProvider Provider');
   }
   apiUrl = apiUrl;
 
@@ -14,6 +13,7 @@ export class HomeServiceProvider {
    * Esta funcion llama un lugar de la api
    * @params
    */
+  
   getService(id) {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'serviciobusqueda/'+id).subscribe(data => {
@@ -22,6 +22,63 @@ export class HomeServiceProvider {
         console.log(err);
       });
     });
+  }
+  getServicePuntosNegativos(id) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'serviciobusquedapuntosnegativos/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getServicePuntosPositivos(id) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'serviciobusquedapuntospositivos/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  obtenerCalificacion(id_usuario,id_servicio) {
+    return new Promise(resolve => {
+      this.http.get(apiUrl+'calificacionservicio/'+id_usuario+'/'+id_servicio).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  calificarLugar(data) {
+    this.http.post(apiUrl+'calificacionservicio', data)
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body", val);
+        },
+        response => {
+            console.log("POST call in error", response);
+        },
+        () => {
+            console.log("The POST observable is now completed.");
+        });
+  }
+
+  actualizarCalificacionLugar(id_servicio, id_usuario, data) {
+    this.http.put(apiUrl+'calificacionservicio/'+id_usuario+'/'+id_servicio, data)
+    .subscribe(
+      val => {
+          console.log("PUT call successful value returned in body", val);
+      },
+      response => {
+          console.log("PUT call in error", response);
+      },
+      () => {
+          console.log("The PUT observable is now completed.");
+      });
   }
 
 }

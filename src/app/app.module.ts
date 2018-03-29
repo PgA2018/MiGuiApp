@@ -26,6 +26,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,8 +41,8 @@ import { HomeServicesListProvider } from '../providers/home-services-list/home-s
 import { HomeServiceProvider } from '../providers/home-service/home-service';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { PasswordRecoverPage } from '../pages/password-recover/password-recover';
-import { GoogleMaps } from '@ionic-native/google-maps';
 import { CommentsProvider } from '../providers/comments/comments';
+import { OneSignal } from '@ionic-native/onesignal';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
@@ -111,6 +113,8 @@ export const firebaseConfig = {
     AuthServiceProvider,
     GoogleMaps,
     CommentsProvider,
+    OneSignal,
+    Geolocation
   ]
 })
 export class AppModule {}

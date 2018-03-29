@@ -81,9 +81,13 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <engine name="android" spec="7.0.0" />
-    <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAvqsFl4pwaTvZxm5H7EVLbtj_FZV7C0Iw" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyAvqsFl4pwaTvZxm5H7EVLbtj_FZV7C0Iw" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.3.3" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAZF0GPrePSzSq4bI2lW4sc1aFd6JdOCYY" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyAZF0GPrePSzSq4bI2lW4sc1aFd6JdOCYY" />
+    </plugin>
+    <engine name="android" spec="^7.0.0" />
 </widget>

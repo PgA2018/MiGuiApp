@@ -20,11 +20,49 @@
             </expandable>
         </div>
     </ion-card>
-    <ion-card>
-        <ion-item class="padd-left">
-            <button ion-button icon-only outline> <ion-icon name="thumbs-up"></ion-icon></button>
-            <button ion-button icon-only outline> <ion-icon name="thumbs-down"></ion-icon></button>
-            <br> 1899 1902
-        </ion-item>
+    <ion-card style="text-align:center;" *ngFor="let s of service">
+        <ng-container *ngIf="puntosPositivos; else elseTemplateSi">
+            <button ion-button class="social-like" *ngFor="let p of puntosPositivos.CalificacionServicios" (click)="calificarLugar(s.id, true)">
+                <span class="like"><ion-icon name="thumbs-up"></ion-icon></span>
+                <span class="count" >{{p.positivos}} </span>
+            </button>
+        </ng-container>
+        <ng-template #elseTemplateSi>
+            <button ion-button class="social-like" (click)="calificarLugar(s.id, true)">
+                <span class="like"><ion-icon name="thumbs-up"></ion-icon></span>
+                <span class="count" > 0 </span>
+            </button>
+        </ng-template>
+
+        <ng-container *ngIf="puntosNegativos; else elseTemplateNo">
+            <button ion-button class="social-dislike" *ngFor="let n of puntosNegativos.CalificacionServicios" (click)="calificarLugar(s.id, false)">
+                <span class="dislike"> {{n.negativos}} </span>
+                <span class="like"> <ion-icon name="thumbs-down"></ion-icon></span>
+            </button>
+        </ng-container>
+        <ng-template #elseTemplateNo>
+            <button ion-button class="social-dislike" (click)="calificarLugar(s.id, false)">
+                <span class="dislike"> 0 </span>
+                <span class="like"> <ion-icon name="thumbs-down"></ion-icon></span>
+            </button>
+        </ng-template>
     </ion-card>
+    <ion-row>
+        <ion-card *ngFor="let s of service">
+            <ion-item>
+                <ion-input type="text" placeholder="Escribe un comentario" autocomplete="on" [(ngModel)]="comentario" name="title"></ion-input>
+                <button ion-button type="submit" item-end (click)="logForm(s.id)">Enviar</button>
+            </ion-item>
+        </ion-card>
+        <ion-list *ngFor="let s of service">
+            <ion-item *ngFor="let c of s.ComentarioServicios">
+                <ion-avatar item-start>
+                    <img src="../../assets/imgs/user.jpg" />
+                </ion-avatar>
+                <small> {{c.correo_usuario}} </small>
+                <h3> {{c.descripcion}} </h3>
+            </ion-item>
+        </ion-list>
+    </ion-row>
+
 </ion-content>

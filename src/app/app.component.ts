@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from '../pages/signin/signin';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 export class MyApp {
   rootPage:any = SigninPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, authService: AuthServiceProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, authService: AuthServiceProvider, private oneSignal: OneSignal, private alertCtrl: AlertController) {
     if (!authService.authenticated) {
       this.rootPage = SigninPage;
     } else {
@@ -25,6 +26,23 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.handlerNotifications();
     });
+  }
+
+  private handlerNotifications(){
+    this.oneSignal.startInit('438e0273-94a0-493c-82c1-dbfba2c8e253', '170098729848');
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    this.oneSignal.handleNotificationOpened()
+    .subscribe(jsonData => {
+      let alert = this.alertCtrl.create({
+        title: jsonData.notification.payload.title,
+        subTitle: jsonData.notification.payload.body,
+        buttons: ['OK']
+      });
+      alert.present();
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    });
+    this.oneSignal.endInit();
   }
 }
