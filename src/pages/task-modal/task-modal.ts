@@ -12,31 +12,30 @@ export class TaskModalPage {
   titulo;
   fecha;
   descripcion;
-  tareas = [];
+  tareas : Array<Object>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TaskModalPage');
-  }
-
-  formulario(){
     this.storage.ready().then(() => {
       this.storage.get('misTareas').then((val) => {
         this.tareas = val;
       });
     });
-    this.storage.ready().then(() =>{
-      this.tareas[this.tareas.length] = {
+  }
+
+  ionViewDidLoad() {
+  }
+
+  formulario(){
+    this.storage.ready().then(() => {
+      this.tareas.push({
         titulo: this.titulo,
         fecha: this.fecha,
         descripcion: this.descripcion
-      }
+      }); 
       console.log(this.tareas);
-      
       this.storage.set('misTareas', this.tareas);
     });
+    console.log(this.tareas);
     this.navCtrl.pop();
   }
 }
