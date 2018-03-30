@@ -7,11 +7,23 @@
 <ion-content padding>
     <ion-card>
         <ion-item>
+            <ion-input type="text" placeholder="Título de la tarea" autocomplete="on" [(ngModel)]="titulo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-textarea type="text" placeholder="Descripción de la tarea" autocomplete="on" [(ngModel)]="descripcion"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label>Elija la fecha</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="fecha"></ion-datetime>
+        </ion-item>
+    </ion-card>
+    <ion-card style="text-align:center;" class="alineacion-botones">
+        <ion-item>
             <button ion-button icon-left color="danger" navPop>
               <ion-icon name="close"></ion-icon>
               Cancelar
             </button>
-            <button ion-button icon-left navPop>
+            <button ion-button icon-left (click)="formulario()">
               <ion-icon name="document"></ion-icon>
               Agregar
             </button>

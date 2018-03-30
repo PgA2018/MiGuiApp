@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            <h4>Tareas</h4>
+            <h4>Tarea</h4>
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -13,27 +13,15 @@
         </button>
     </div>
     <ion-row>
-        <ion-card>
+        <ion-card *ngFor="let tarea of tareas">
             <ion-item>
                 <ion-avatar item-start>
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                 </ion-avatar>
-                <h2>Tarea 1</h2><small>Descripción de la tarea 1</small>
-                <p>November 5, 2018</p>
+                <h2> {{tarea.descripcion}} </h2><small>{{tarea.descripcion}}</small>
+                <p>{{tarea.fecha}}</p>
                 <button ion-button color="light" icon-only item-end>
                     <ion-icon name="trash" color="danger"></ion-icon>
-                </button>
-            </ion-item>
-        </ion-card>
-        <ion-card>
-            <ion-item>
-                <ion-avatar item-start>
-                    <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
-                </ion-avatar>
-                <h2>Tarea 2</h2><small>Descripción de la tarea 2</small>
-                <p>Marzo 5, 2018</p>
-                <button ion-button color="light" icon-only item-end>
-                        <ion-icon name="trash" color="danger"></ion-icon>
                 </button>
             </ion-item>
         </ion-card>

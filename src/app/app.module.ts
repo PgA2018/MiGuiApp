@@ -2,9 +2,11 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 // PAGINAS
-import { MapPage } from '../pages/map/map';
+import { MapsPage } from '../pages/maps/maps';
 import { HomePage } from '../pages/home/home';
 import { HomePlacePage } from '../pages/home-place/home-place';
 import { HomePlacesListPage } from '../pages/home-places-list/home-places-list';
@@ -56,7 +58,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    MapPage,
+    MapsPage,
     HomePage,
     HomePlacePage,
     HomePlacesListPage,
@@ -76,6 +78,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     Ionic2RatingModule,
     HttpClientModule,
     TruncateModule,
@@ -85,7 +88,7 @@ export const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    MapPage,
+    MapsPage,
     HomePage,
     HomePlacePage,
     HomePlacesListPage,

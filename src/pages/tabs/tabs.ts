@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MapPage } from '../map/map';
+import { MapsPage } from '../maps/maps';
 import { HomePage } from '../home/home';
 import { TaskPage } from '../task/task';
 import { ConfigurationPage } from '../configuration/configuration';
@@ -10,7 +10,7 @@ import { ConfigurationPage } from '../configuration/configuration';
 })
 export class TabsPage {
 
-  tab1Root = MapPage;
+  tab1Root = MapsPage;
   tab2Root = HomePage;
   tab3Root = TaskPage;
   tab4Root = ConfigurationPage;
