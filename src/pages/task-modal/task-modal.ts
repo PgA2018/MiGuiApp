@@ -12,12 +12,15 @@ export class TaskModalPage {
   titulo;
   fecha;
   descripcion;
-  tareas : Array<Object>;
+  tareas = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
     this.storage.ready().then(() => {
       this.storage.get('misTareas').then((val) => {
-        this.tareas = val;
+        console.log(this.storage.length());
+        if(val !== null){
+          this.tareas = val;
+        }
       });
     });
   }
@@ -27,14 +30,15 @@ export class TaskModalPage {
 
   formulario(){
     this.storage.ready().then(() => {
+      this.storage.remove('misTareas');
       this.tareas.push({
         titulo: this.titulo,
         fecha: this.fecha,
         descripcion: this.descripcion
       }); 
       this.storage.set('misTareas', this.tareas);
+      console.log(this.storage.length());
     });
-    console.log(this.tareas);
     this.navCtrl.pop();
   }
 }
