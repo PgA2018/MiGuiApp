@@ -26,5 +26,15 @@ export class TaskPage {
   taskModal() {
     let modal = this.modalCtrl.create(TaskModalPage);
     modal.present();
+    modal.onDidDismiss(() => {
+      this.ionViewDidLoad();
+    });
+  }
+  
+  eliminarTarea(i){
+    this.tareas.splice(i,1);
+    this.storage.ready().then(() => {
+      this.storage.set('misTareas', this.tareas);
+    });
   }
 }

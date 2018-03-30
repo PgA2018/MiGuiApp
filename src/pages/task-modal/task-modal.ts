@@ -32,7 +32,6 @@ export class TaskModalPage {
         fecha: this.fecha,
         descripcion: this.descripcion
       }); 
-      console.log(this.tareas);
       this.storage.set('misTareas', this.tareas);
     });
     console.log(this.tareas);
