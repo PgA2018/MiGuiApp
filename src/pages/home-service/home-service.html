@@ -24,12 +24,22 @@
             </expandable>
         </div>
     </ion-card>
+    <!-- Código de los botones like y dislike-->
     <ion-card style="text-align:center;" *ngFor="let s of service">
+        <!-- Código de like-->
         <ng-container *ngIf="puntosPositivos; else elseTemplateSi">
-            <button ion-button class="social-like" *ngFor="let p of puntosPositivos.CalificacionServicios" (click)="calificarLugar(s.id, true)">
-                <span class="like"><ion-icon name="thumbs-up"></ion-icon></span>
-                <span class="count" >{{p.positivos}} </span>
-            </button>
+            <ng-container *ngIf="punto; else elseTemplateGreen">
+                <button ion-button class="social-like green-color" *ngFor="let p of puntosPositivos.CalificacionServicios" (click)="calificarLugar(s.id, true)">
+                    <span class="like"><ion-icon name="thumbs-up"></ion-icon></span>
+                    <span class="count" >{{p.positivos}} </span>
+                </button>
+            </ng-container>
+            <ng-template #elseTemplateGreen>
+                <button ion-button class="social-like" *ngFor="let p of puntosPositivos.CalificacionServicios" (click)="calificarLugar(s.id, true)">
+                    <span class="like"><ion-icon name="thumbs-up"></ion-icon></span>
+                    <span class="count" >{{p.positivos}} </span>
+                </button>
+            </ng-template>
         </ng-container>
         <ng-template #elseTemplateSi>
             <button ion-button class="social-like" (click)="calificarLugar(s.id, true)">
@@ -37,12 +47,20 @@
                 <span class="count" > 0 </span>
             </button>
         </ng-template>
-
+        <!-- FIN Código de like-->
         <ng-container *ngIf="puntosNegativos; else elseTemplateNo">
-            <button ion-button class="social-dislike" *ngFor="let n of puntosNegativos.CalificacionServicios" (click)="calificarLugar(s.id, false)">
-                <span class="dislike"> {{n.negativos}} </span>
-                <span class="like"> <ion-icon name="thumbs-down"></ion-icon></span>
-            </button>
+            <ng-container *ngIf="!punto; else elseTemplateRed">
+                <button ion-button class="social-dislike red-color" *ngFor="let n of puntosNegativos.CalificacionServicios" (click)="calificarLugar(s.id, false)">
+                    <span class="dislike"> {{n.negativos}} </span>
+                    <span class="like"> <ion-icon name="thumbs-down"></ion-icon></span>
+                </button>
+            </ng-container>
+            <ng-template #elseTemplateRed>
+                <button ion-button class="social-dislike" *ngFor="let n of puntosNegativos.CalificacionServicios" (click)="calificarLugar(s.id, false)">
+                    <span class="dislike"> {{n.negativos}} </span>
+                    <span class="like"> <ion-icon name="thumbs-down"></ion-icon></span>
+                </button>
+            </ng-template>
         </ng-container>
         <ng-template #elseTemplateNo>
             <button ion-button class="social-dislike" (click)="calificarLugar(s.id, false)">
@@ -51,6 +69,7 @@
             </button>
         </ng-template>
     </ion-card>
+    <!-- FIN Código de los botones like y dislike-->
     <ion-row>
         <ion-card *ngFor="let s of service">
             <ion-item>

@@ -38,6 +38,7 @@ export class HomeServicePage {
     this.getService(this.navParams.get('id'));
     this.getServicePuntosNegativos(this.navParams.get('id'));
     this.getServicePuntosPositivos(this.navParams.get('id'));
+    this.obtenerCalificacion(this.navParams.get('id'));
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
