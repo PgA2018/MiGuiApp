@@ -4,6 +4,10 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event);">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-row>
         <ion-slides *ngFor="let p of place">
             <ion-card>
@@ -36,6 +40,7 @@
             <button no-padding item-end ion-button (click)="calificarLugar(p.id)">Enviar</button>
         </ion-item>
     </ion-card>
+
     <br>
     <ion-row>
         <ion-card *ngFor="let p of place" (click)="goToServicesList(p.id)">

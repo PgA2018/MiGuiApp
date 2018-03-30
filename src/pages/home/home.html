@@ -6,6 +6,10 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event);">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-row>
         <ion-searchbar [(ngModel)]="busqueda" [showCancelButton]="shouldShowCancel" (ionInput)="setFilteredItems()" (ionCancel)="onCancel($event)">
         </ion-searchbar>

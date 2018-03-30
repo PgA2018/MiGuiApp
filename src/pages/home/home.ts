@@ -23,7 +23,18 @@ export class HomePage {
     this.getRestaurant();
     this.getTuristPlace();
     this.getPub();
-    
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getHotel();
+    this.getRestaurant();
+    this.getTuristPlace();
+    this.getPub();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 1000);
   }
 
   getHotel(){

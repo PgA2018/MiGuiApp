@@ -33,6 +33,17 @@ export class HomeServicePage {
     this.obtenerCalificacion(this.navParams.get('id'));
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getService(this.navParams.get('id'));
+    this.getServicePuntosNegativos(this.navParams.get('id'));
+    this.getServicePuntosPositivos(this.navParams.get('id'));
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 1000);
+  }
+
   getService(id){
     this.homeServiceProvider.getService(id)
     .then(data => {
@@ -44,7 +55,6 @@ export class HomeServicePage {
     this.homeServiceProvider.getServicePuntosNegativos(id)
     .then(data => {
       this.puntosNegativos = data;
-      console.log('los negativos'+this.puntosNegativos);
     });
   }
 
@@ -52,8 +62,6 @@ export class HomeServicePage {
     this.homeServiceProvider.getServicePuntosPositivos(id)
     .then(data => {
       this.puntosPositivos = data;
-      console.log('los positivos'+this.puntosPositivos);
-      
     });
   }
 
@@ -106,8 +114,7 @@ export class HomeServicePage {
 }
 
 calificarLugar(id_servicio, puntoNuevo){
-  console.log('EL PRIMER MENSAJE' + this.calificado);
-  console.log('EL MENSAJE' + this.punto);
+    this.obtenerCalificacion(this.navParams.get('id'));
     let loading = this.loadingCtrl.create({
         content: 'Enviando calificacion. Por favor, espere...'
     });
@@ -122,8 +129,21 @@ calificarLugar(id_servicio, puntoNuevo){
         }
         if(this.punto === undefined){
             this.homeServiceProvider.calificarLugar(informacionCalificacion);
+            //if(puntoNuevo === true) this.puntosPositivos.CalificacionServicios[0].positivos++;
+            //else this.puntosNegativos.CalificacionServicios[0].negativos++;
         } else {
-            this.homeServiceProvider.actualizarCalificacionLugar(id_servicio, user.uid, {valor: puntoNuevo})
+            this.homeServiceProvider.actualizarCalificacionLugar(id_servicio, user.uid, {valor: puntoNuevo});
+            /*if(this.punto === true && puntoNuevo===false){
+                this.puntosPositivos.CalificacionServicios[0].positivos--;
+                this.puntosNegativos.CalificacionServicios[0].negativos++;
+                this.punto = false;
+            }
+            else if(this.punto === false && puntoNuevo===true){
+                this.puntosPositivos.CalificacionServicios[0].positivos++;
+                this.puntosNegativos.CalificacionServicios[0].negativos--;
+                this.punto = true;
+            }
+            console.log(this.punto + ' - ' + puntoNuevo);*/
         }
         
     } else {

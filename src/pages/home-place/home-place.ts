@@ -28,13 +28,24 @@ export class HomePlacePage {
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public commentProvider: CommentsProvider, 
-        public authServiceProvider: AuthServiceProvider) {}
+        public authServiceProvider: AuthServiceProvider) {
+        
+        }
 
     ionViewDidLoad() {
-        this.items = [{expanded: false}];
         this.getPlace(this.navParams.get('id'));
         this.obtenerCalificacion(this.navParams.get('id'));
+        this.items = [{expanded: false}];
     }
+
+    doRefresh(refresher) {
+        console.log('Begin async operation', refresher);
+        this.getPlace(this.navParams.get('id'));
+        setTimeout(() => {
+          console.log('Async operation has ended');
+          refresher.complete();
+        }, 1000);
+      }
 
     getPlace(ide){
         this.homePlace.getPlace(ide)
@@ -123,6 +134,7 @@ export class HomePlacePage {
                 this.homePlace.actualizarCalificacionLugar(id_lugar, user.uid, {calificacion: this.rate})
             }
             
+            this.getPlace(this.navParams.get('id'));
         } else {
             loading.dismiss();
             this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
@@ -137,4 +149,5 @@ export class HomePlacePage {
         });
         alert.present();
     }
+    
 }
