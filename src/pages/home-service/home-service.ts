@@ -23,7 +23,22 @@ export class HomeServicePage {
   calificado;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public homeServiceProvider: HomeServiceProvider,public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,public authServiceProvider: AuthServiceProvider, public commentProvider: CommentsProvider) {}
+    public alertCtrl: AlertController,public authServiceProvider: AuthServiceProvider, public commentProvider: CommentsProvider) {
+
+    }
+
+    ionViewWillEnter(){
+     console.log("hola will ENter");
+     
+    }
+    ionViewCanEnter(){
+     console.log("hola can enter");
+     
+    }
+    ionViewDidEnter(){
+     console.log("hola did enter");
+     
+    }
 
   ionViewDidLoad() {
     this.items = [{expanded: false}];

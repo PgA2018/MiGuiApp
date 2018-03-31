@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            <h4>Tarea</h4>
+            <h4>Tareas</h4>
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -13,14 +13,14 @@
         </button>
     </div>
     <ion-row>
-        <ion-card *ngFor="let tarea of tareas; let i = index">
+        <ion-card *ngFor="let tarea of tasks | async">
             <ion-item>
                 <ion-avatar item-start>
                     <img src="https://st.depositphotos.com/2288675/2455/i/950/depositphotos_24553989-stock-photo-hotel.jpg" />
                 </ion-avatar>
-                <h2> {{tarea.titulo}} </h2><small>{{tarea.descripcion}}</small>
+                <h2> {{tarea.title}} </h2><small>{{tarea.descripcion}}</small>
                 <p>{{tarea.fecha}}</p>
-                <button ion-button color="light" icon-only item-end (click)="eliminarTarea(i)">
+                <button ion-button color="light" icon-only item-end (click)="eliminarTarea(tarea)">
                     <ion-icon name="trash" color="danger"></ion-icon>
                 </button>
             </ion-item>
