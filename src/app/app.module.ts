@@ -6,7 +6,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 
 // PAGINAS
-import { MapsPage } from '../pages/maps/maps';
+import { MapsPage } from '../pages/maps/contact';
 import { HomePage } from '../pages/home/home';
 import { HomePlacePage } from '../pages/home-place/home-place';
 import { HomePlacesListPage } from '../pages/home-places-list/home-places-list';
@@ -45,6 +45,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { PasswordRecoverPage } from '../pages/password-recover/password-recover';
 import { CommentsProvider } from '../providers/comments/comments';
 import { OneSignal } from '@ionic-native/onesignal';
+import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
@@ -117,7 +118,8 @@ export const firebaseConfig = {
     GoogleMaps,
     CommentsProvider,
     OneSignal,
-    Geolocation
+    Geolocation,
+    GoogleMapsProvider
   ]
 })
 export class AppModule {}

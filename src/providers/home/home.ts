@@ -59,8 +59,15 @@ export class HomeProvider {
         console.log(err);
       });
     });
+  }  
+
+  getMapaAll(){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'lugarmapa').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
   }
-
-  
-
 }

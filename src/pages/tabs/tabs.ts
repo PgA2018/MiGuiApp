@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MapsPage } from '../maps/maps';
+import { MapsPage } from '../maps/contact';
 import { HomePage } from '../home/home';
 import { TaskPage } from '../task/task';
 import { ConfigurationPage } from '../configuration/configuration';
