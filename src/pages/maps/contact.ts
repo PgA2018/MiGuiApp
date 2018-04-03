@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
-import { HomeProvider } from '../../providers/home/home';
 
 
 @Component({

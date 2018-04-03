@@ -3,7 +3,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { HomeProvider } from '../../providers/home/home';
 
 declare var google;
-
+//ELIMINAR EL INFOWINDOW
 @Injectable()
 export class GoogleMapsProvider {
   mapElement: any;
@@ -12,6 +12,8 @@ export class GoogleMapsProvider {
   apiKey: string = "AIzaSyA3uv4zlpr1Yi4Hb0h7rB7xXLNiePeBEc0";
   centerChangedCallback: any;
   markers;
+  infoWindow;
+  markerNombre;
 
   constructor(public geolocation: Geolocation,public homeProvider: HomeProvider) {
     this.getHotel();
@@ -62,19 +64,30 @@ export class GoogleMapsProvider {
         let mapOptions = {
           center: center,
           zoom: 17,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          tilt: 30
         }
 
         this.map = new google.maps.Map(this.mapElement, mapOptions);
         
+        this.infoWindow = new google.maps.InfoWindow({
+          content:'<div id="content"><h1 id="firstHeading" class="firstHeading">' + "hola" + '</h1></div>'
+        });
+
         for (let m of this.markers) {
           let posicion = new google.maps.LatLng(m.latitud, m.longitud);
-          
           this.marker = new google.maps.Marker({
             map: this.map,
-            position: posicion
+            title: m.nombre,
+            position: posicion,
+            draggable:true,
+          });
+          this.marker.addListener('click', function() {
+            console.log("me aplastan "+m.nombre);
+            this.infoWindow.open(this.map, this.marker);
           });
         }
+        
         resolve(true);
       });
     });
