@@ -69,10 +69,6 @@ export class GoogleMapsProvider {
         }
 
         this.map = new google.maps.Map(this.mapElement, mapOptions);
-        
-        this.infoWindow = new google.maps.InfoWindow({
-          content:'<div id="content"><h1 id="firstHeading" class="firstHeading">' + "hola" + '</h1></div>'
-        });
 
         for (let m of this.markers) {
           let posicion = new google.maps.LatLng(m.latitud, m.longitud);
@@ -84,7 +80,6 @@ export class GoogleMapsProvider {
           });
           this.marker.addListener('click', function() {
             console.log("me aplastan "+m.nombre);
-            this.infoWindow.open(this.map, this.marker);
           });
         }
         

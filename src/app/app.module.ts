@@ -121,7 +121,7 @@ export const firebaseConfig = {
     CommentsProvider,
     OneSignal,
     Geolocation,
-    GoogleMapsProvider
+    GoogleMapsProvider,
   ]
 })
 export class AppModule {}

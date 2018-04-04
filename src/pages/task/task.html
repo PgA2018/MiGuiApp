@@ -20,7 +20,7 @@
                 </ion-avatar>
                 <h2> {{tarea.title}} </h2><small>{{tarea.descripcion}}</small>
                 <p>{{tarea.fecha}}</p>
-                <button ion-button color="light" icon-only item-end (click)="eliminarTarea(tarea)">
+                <button ion-button color="light" icon-only item-end (click)="removeTask(tarea)">
                     <ion-icon name="trash" color="danger"></ion-icon>
                 </button>
             </ion-item>
