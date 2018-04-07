@@ -47,6 +47,7 @@ import { PasswordRecoverPage } from '../pages/password-recover/password-recover'
 import { CommentsProvider } from '../providers/comments/comments';
 import { OneSignal } from '@ionic-native/onesignal';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
@@ -119,6 +120,7 @@ export const firebaseConfig = {
     AuthServiceProvider,
     GoogleMaps,
     CommentsProvider,
+    LocalNotifications,
     OneSignal,
     Geolocation,
     GoogleMapsProvider,

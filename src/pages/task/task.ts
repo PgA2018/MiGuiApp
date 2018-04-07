@@ -15,7 +15,6 @@ export class TaskPage {
   tasksRef: AngularFireList<any>;
   tasks: Observable<any[]>;
   usuario;
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController,
     public database: AngularFireDatabase, public authServiceProvider: AuthServiceProvider, public loadingCtrl: LoadingController) {
       const user = this.authServiceProvider.getCurrentUser();
@@ -25,11 +24,17 @@ export class TaskPage {
   }
 
   ionViewDidLoad() {
+    
     this.tasksRef = this.database.list('tasks', ref => ref.orderByChild('usuario').equalTo(this.usuario));
-      this.tasks = this.tasksRef.snapshotChanges()
-      .map(changes => {
-        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-      });
+    this.tasks = this.tasksRef.snapshotChanges()
+    .map(changes => {
+      return changes.map(c => (
+        { 
+          key: c.payload.key, 
+          ...c.payload.val() 
+        }
+      ));
+    });
   }
   
   taskModal() {
