@@ -4,6 +4,7 @@ import { TaskModalPage } from '../task-modal/task-modal';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,7 @@ export class TaskPage {
   tasks: Observable<any[]>;
   usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController,
-    public database: AngularFireDatabase, public authServiceProvider: AuthServiceProvider, public loadingCtrl: LoadingController) {
+    public database: AngularFireDatabase, public authServiceProvider: AuthServiceProvider, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications) {
       const user = this.authServiceProvider.getCurrentUser();
       if(user != null){
         this.usuario = user.uid;
@@ -47,6 +48,11 @@ export class TaskPage {
 
   removeTask( task ){
     console.log( task );
+    this.cancel(task.id);
     this.tasksRef.remove( task.key );
+  }
+
+  cancel(id): void{
+    this.localNotifications.cancel(id);
   }
 }
