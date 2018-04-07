@@ -82,7 +82,6 @@ export class GoogleMapsProvider {
             console.log("me aplastan "+m.nombre);
           });
         }
-        
         resolve(true);
       });
     });

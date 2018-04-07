@@ -49,5 +49,4 @@ export class TaskPage {
     console.log( task );
     this.tasksRef.remove( task.key );
   }
-  
 }

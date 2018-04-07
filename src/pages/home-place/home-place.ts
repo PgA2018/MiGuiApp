@@ -21,6 +21,7 @@ export class HomePlacePage {
     comentario = '';
     informacionComentario;
     cali;
+    id_usuario;
     
     constructor(public navCtrl: NavController, 
         public navParams: NavParams, 
@@ -29,7 +30,10 @@ export class HomePlacePage {
         public alertCtrl: AlertController,
         public commentProvider: CommentsProvider, 
         public authServiceProvider: AuthServiceProvider) {
-        
+            const user = this.authServiceProvider.getCurrentUser();
+            if(user != null){
+                this.id_usuario = user.uid;
+            }
         }
 
     ionViewDidLoad() {
@@ -45,7 +49,7 @@ export class HomePlacePage {
           console.log('Async operation has ended');
           refresher.complete();
         }, 1000);
-      }
+    }
 
     getPlace(ide){
         this.homePlace.getPlace(ide)
@@ -97,6 +101,7 @@ export class HomePlacePage {
             loading.dismiss();
             this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
         }
+        this.getPlace(this.navParams.get('id'));
     } 
     
     obtenerCalificacion(ide){
@@ -139,6 +144,7 @@ export class HomePlacePage {
             loading.dismiss();
             this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
         }
+        this.getPlace(this.navParams.get('id'));
     }
 
     alert(title: string, message: string) {
@@ -148,6 +154,10 @@ export class HomePlacePage {
             buttons: ['OK']
         });
         alert.present();
+    }
+
+    eliminarComentario(id, id_usuario){
+        this.homePlace.eliminarComentario(id, id_usuario);
     }
     
 }

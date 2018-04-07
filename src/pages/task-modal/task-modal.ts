@@ -95,5 +95,4 @@ export class TaskModalPage {
       data:{ mydata: 'mas prueba'}
     });
   }
-
 }

@@ -84,6 +84,9 @@
                 </ion-avatar>
                 <small> {{c.correo_usuario}} </small>
                 <h3> {{c.descripcion}} </h3>
+                <button *ngIf="id_usuario === c.id_usuario" ion-button color="light" icon-only item-end (click)="eliminarComentario(c.id, c.id_usuario)">
+                    <ion-icon name="trash" color="danger"></ion-icon>
+                </button>
             </ion-item>
         </ion-list>
     </ion-row>

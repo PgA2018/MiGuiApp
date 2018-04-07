@@ -21,10 +21,14 @@ export class HomeServicePage {
   puntosPositivos;
   punto;
   calificado;
+  id_usuario;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public homeServiceProvider: HomeServiceProvider,public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,public authServiceProvider: AuthServiceProvider, public commentProvider: CommentsProvider) {
-
+        const user = this.authServiceProvider.getCurrentUser();
+            if(user != null){
+                this.id_usuario = user.uid;
+            }
     }
 
     ionViewWillEnter(){
@@ -129,44 +133,44 @@ export class HomeServicePage {
     });
 }
 
-calificarLugar(id_servicio, puntoNuevo){
-    this.obtenerCalificacion(this.navParams.get('id'));
-    let loading = this.loadingCtrl.create({
-        content: 'Enviando calificacion. Por favor, espere...'
-    });
-    loading.present();
-    const user = this.authServiceProvider.getCurrentUser();
-    if(user != null){
-        loading.dismiss();
-        let informacionCalificacion = {
-            id_servicio: id_servicio,
-            id_usuario: user.uid,
-            valor: puntoNuevo
-        }
-        if(this.punto === undefined){
-            this.homeServiceProvider.calificarLugar(informacionCalificacion);
-            //if(puntoNuevo === true) this.puntosPositivos.CalificacionServicios[0].positivos++;
-            //else this.puntosNegativos.CalificacionServicios[0].negativos++;
+    calificarLugar(id_servicio, puntoNuevo){
+        this.obtenerCalificacion(this.navParams.get('id'));
+        let loading = this.loadingCtrl.create({
+            content: 'Enviando calificacion. Por favor, espere...'
+        });
+        loading.present();
+        const user = this.authServiceProvider.getCurrentUser();
+        if(user != null){
+            loading.dismiss();
+            let informacionCalificacion = {
+                id_servicio: id_servicio,
+                id_usuario: user.uid,
+                valor: puntoNuevo
+            }
+            if(this.punto === undefined){
+                this.homeServiceProvider.calificarLugar(informacionCalificacion);
+                //if(puntoNuevo === true) this.puntosPositivos.CalificacionServicios[0].positivos++;
+                //else this.puntosNegativos.CalificacionServicios[0].negativos++;
+            } else {
+                this.homeServiceProvider.actualizarCalificacionLugar(id_servicio, user.uid, {valor: puntoNuevo});
+                /*if(this.punto === true && puntoNuevo===false){
+                    this.puntosPositivos.CalificacionServicios[0].positivos--;
+                    this.puntosNegativos.CalificacionServicios[0].negativos++;
+                    this.punto = false;
+                }
+                else if(this.punto === false && puntoNuevo===true){
+                    this.puntosPositivos.CalificacionServicios[0].positivos++;
+                    this.puntosNegativos.CalificacionServicios[0].negativos--;
+                    this.punto = true;
+                }
+                console.log(this.punto + ' - ' + puntoNuevo);*/
+            }
+            
         } else {
-            this.homeServiceProvider.actualizarCalificacionLugar(id_servicio, user.uid, {valor: puntoNuevo});
-            /*if(this.punto === true && puntoNuevo===false){
-                this.puntosPositivos.CalificacionServicios[0].positivos--;
-                this.puntosNegativos.CalificacionServicios[0].negativos++;
-                this.punto = false;
-            }
-            else if(this.punto === false && puntoNuevo===true){
-                this.puntosPositivos.CalificacionServicios[0].positivos++;
-                this.puntosNegativos.CalificacionServicios[0].negativos--;
-                this.punto = true;
-            }
-            console.log(this.punto + ' - ' + puntoNuevo);*/
+            loading.dismiss();
+            this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
         }
-        
-    } else {
-        loading.dismiss();
-        this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
     }
-}
 
   alert(title: string, message: string) {
     let alert = this.alertCtrl.create({
@@ -175,5 +179,9 @@ calificarLugar(id_servicio, puntoNuevo){
         buttons: ['OK']
     });
     alert.present();
-}  
+    }
+
+    eliminarComentario(id, id_usuario){
+        this.homeServiceProvider.eliminarComentario(id, id_usuario);
+    }
 }

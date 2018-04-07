@@ -60,4 +60,18 @@ export class HomePlaceProvider {
       });
   }
 
+  eliminarComentario(id, id_usuario){
+    this.http.delete(apiUrl+'comentariolugarusuario/'+id+'/'+id_usuario)
+    .subscribe(
+      val => {
+          console.log("DELETE call successful value returned in body", val);
+      },
+      response => {
+          console.log("DELETE call in error", response);
+      },
+      () => {
+          console.log("The DELETE observable is now completed.");
+      });
+  }
+
 }
