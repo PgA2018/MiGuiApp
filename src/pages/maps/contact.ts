@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { HomeProvider } from '../../providers/home/home';
 import { Geolocation } from '@ionic-native/geolocation';
+import { HomePlacePage } from '../home-place/home-place';
 
 declare var google;
 @Component({
@@ -81,7 +82,6 @@ export class MapsPage {
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           tilt: 30
         }
-
         this.map = new google.maps.Map(this.mapElement, mapOptions);
         this.pushSpin(this.map);
         resolve(true);
@@ -91,23 +91,26 @@ export class MapsPage {
 
   pushSpin(mapa){
     for (let m of this.markers) {
+      console.log(m.CategoriaLugars[0].Categorium.nombre);
+      
       let posicion = new google.maps.LatLng(m.latitud, m.longitud);
       this.marcadores.push(new google.maps.Marker({
         title: m.nombre,
+        description: m.CategoriaLugars[0].Categorium.nombre,
         position: posicion,
         draggable:false,
       }));
       this.marcadores[this.marcadores.length - 1].setMap(mapa);
       this.marcadores[this.marcadores.length - 1].addListener('click', () => {
         console.log("me aplastan "+m.nombre);
-        this.presentAlert(m.nombre, m.descripcion);
+        this.presentAlert(m.nombre, m.descripcion,m.id);
       });
     }
   }
 
   filtrarLista() {
     for (let i = 0; i < this.marcadores.length; i++) {
-      if(this.marcadores[i].title.toLowerCase().indexOf(this.busqueda.toLowerCase()) >= 0){
+      if( (this.marcadores[i].title.toLowerCase().indexOf(this.busqueda.toLowerCase()) >= 0) || (this.marcadores[i].description.toLowerCase().indexOf(this.busqueda.toLowerCase())  >= 0) ){
         this.marcadores[i].setVisible(true);
       }else{
         this.marcadores[i].setVisible(false);
@@ -115,7 +118,7 @@ export class MapsPage {
     }
   }
 
-  presentAlert(titulo, descripcion) {
+  presentAlert(titulo, descripcion,id) {
     let alert = this.alertCtrl.create({
       title: titulo,
       subTitle: descripcion,
@@ -130,7 +133,9 @@ export class MapsPage {
         {
           text: 'Ir al lugar',
           handler: data => {
-            
+            this.navCtrl.push(HomePlacePage,{
+              id : id
+            })
           }
         }
       ]
