@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { HomeProvider } from '../../providers/home/home';
 import { Geolocation } from '@ionic-native/geolocation';
+import { FilterByNameProvider } from '../../providers/filter-by-name/filter-by-name';
 
 declare var google;
 @Component({
@@ -18,10 +19,13 @@ export class MapsPage {
   apiKey: string = "AIzaSyA3uv4zlpr1Yi4Hb0h7rB7xXLNiePeBEc0";
   centerChangedCallback: any;
   markers;
+  markersSearch = [];
   infoWindow;
   markerNombre;
+  busqueda: string = '';
+  marcadores = [];
 
-  constructor(public navCtrl: NavController,public maps: GoogleMapsProvider, public geolocation: Geolocation,public homeProvider: HomeProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,public maps: GoogleMapsProvider, public geolocation: Geolocation,public homeProvider: HomeProvider, public alertCtrl: AlertController,public filerByName : FilterByNameProvider) {
     this.getHotel();
   }
   
@@ -36,6 +40,7 @@ export class MapsPage {
     this.homeProvider.getMapaAll()
     .then(data => {
       this.markers = data;
+      this.markersSearch = this.markers;
     });
   }
 
@@ -82,23 +87,36 @@ export class MapsPage {
         }
 
         this.map = new google.maps.Map(this.mapElement, mapOptions);
-
-        for (let m of this.markers) {
-          let posicion = new google.maps.LatLng(m.latitud, m.longitud);
-          this.marker = new google.maps.Marker({
-            map: this.map,
-            title: m.nombre,
-            position: posicion,
-            draggable:false,
-          });
-          this.marker.addListener('click', () => {
-            console.log("me aplastan "+m.nombre);
-            this.presentAlert(m.nombre, m.descripcion);
-          });
-        }
+        this.pushSpin(this.map);
         resolve(true);
       });
     });
+  }
+
+  pushSpin(mapa){
+    for (let m of this.markersSearch) {
+      let posicion = new google.maps.LatLng(m.latitud, m.longitud);
+      this.marcadores.push(new google.maps.Marker({
+        title: m.nombre,
+        position: posicion,
+        draggable:false,
+      }));
+      this.marcadores[this.marcadores.length - 1].setMap(mapa);
+      this.marcadores[this.marcadores.length - 1].addListener('click', () => {
+        console.log("me aplastan "+m.nombre);
+        this.presentAlert(m.nombre, m.descripcion);
+      });
+    }
+  }
+
+  filtrarLista() {
+    for (let i = 0; i < this.marcadores.length; i++) {
+      if(this.marcadores[i].title.toLowerCase().indexOf(this.busqueda.toLowerCase()) >= 0){
+        this.marcadores[i].setVisible(true);
+      }else{
+        this.marcadores[i].setVisible(false);
+      }
+    }
   }
 
   presentAlert(titulo, descripcion) {

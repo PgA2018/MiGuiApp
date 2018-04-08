@@ -74,7 +74,7 @@
             </ion-item>
         </ion-card>
         <ion-list *ngFor="let p of place">
-            <ion-item *ngFor="let c of p.ComentarioLugars">
+            <ion-item *ngFor="let c of p.ComentarioLugars.reverse()">
                 <ion-avatar item-start *ngIf="foto">
                     <img [src]='obtenerFoto(c.id_usuario)' />
                 </ion-avatar>
@@ -82,7 +82,7 @@
                     <img src="../../assets/imgs/user.jpg" />
                 </ion-avatar>
                 <small> {{c.correo_usuario}} </small>
-                <h3> {{c.descripcion}} </h3>
+                <h2> <small> {{c.descripcion}} </small> </h2>
                 <button *ngIf="id_usuario === c.id_usuario" ion-button color="light" icon-only item-end (click)="eliminarComentario(c.id, c.id_usuario)">
                         <ion-icon name="trash" color="danger"></ion-icon>
                 </button>

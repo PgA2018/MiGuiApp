@@ -25,6 +25,7 @@ export class HomePlacePage {
     id_usuario;
     foto;
     url;
+    fecha: Date;
     
     constructor(public navCtrl: NavController, 
         public navParams: NavParams, 
@@ -97,14 +98,16 @@ export class HomePlacePage {
         });
         loading.present();
         const user = this.authServiceProvider.getCurrentUser();
+        var mydate = Date.now();
         if(user != null){
             loading.dismiss();
             this.informacionComentario = {
                 correo_usuario: user.email,
                 id_usuario: user.uid,
                 id_lugar: id_lugar,
-                descripcion: this.comentario
-            }
+                descripcion: this.comentario,
+                fecha: mydate
+            };
             this.commentProvider.agregarComentarioLugar(this.informacionComentario);
             this.comentario = '';
         } else {

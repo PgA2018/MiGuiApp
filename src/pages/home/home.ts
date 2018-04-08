@@ -41,6 +41,16 @@ export class HomePage {
     this.homeProvider.getHotelTop()
     .then(data => {
       this.hotels = data;
+      var nuevosHoteles = [];
+      for (let index = 0; index < this.hotels.length; index++) {
+        if(this.hotels[index].Calificacions[0]){
+          nuevosHoteles.push(this.hotels[index]);
+        }
+      }
+      if(nuevosHoteles.length > 5){
+        nuevosHoteles.splice(5, nuevosHoteles.length - 5);
+      }
+      this.hotels = nuevosHoteles;
     });
   }
 
@@ -48,6 +58,16 @@ export class HomePage {
     this.homeProvider.getRestaurantTop()
     .then(data => {
       this.restaurants = data;
+      var nuevosRestaurantes = [];
+      for (let index = 0; index < this.restaurants.length; index++) {
+        if(this.restaurants[index].Calificacions[0]){
+          nuevosRestaurantes.push(this.restaurants[index]);
+        }
+      }
+      if(nuevosRestaurantes.length > 5){
+        nuevosRestaurantes.splice(5, nuevosRestaurantes.length - 5);
+      }
+      this.restaurants = nuevosRestaurantes;
     });
   }
 

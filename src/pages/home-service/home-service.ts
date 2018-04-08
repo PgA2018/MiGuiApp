@@ -31,19 +31,6 @@ export class HomeServicePage {
             }
     }
 
-    ionViewWillEnter(){
-     console.log("hola will ENter");
-     
-    }
-    ionViewCanEnter(){
-     console.log("hola can enter");
-     
-    }
-    ionViewDidEnter(){
-     console.log("hola did enter");
-     
-    }
-
   ionViewDidLoad() {
     this.items = [{expanded: false}];
     this.getService(this.navParams.get('id'));
