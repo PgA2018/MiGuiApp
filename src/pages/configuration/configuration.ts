@@ -32,7 +32,7 @@ export class ConfigurationPage {
       if(user != null){
         this.usuario = user.uid;
         this.correo = user.email;
-        this.foto = domSanitizer.bypassSecurityTrustResourceUrl(user.photoURL);
+        this.foto = this.domSanitizer.bypassSecurityTrustResourceUrl(user.photoURL);
       }
     this.confsRef = this.database.list('conf', ref => ref.orderByChild('usuario').equalTo(this.usuario));
     this.conf = this.confsRef.snapshotChanges()

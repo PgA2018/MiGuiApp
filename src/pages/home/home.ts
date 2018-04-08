@@ -75,6 +75,16 @@ export class HomePage {
     this.homeProvider.getTuristPlaceTop()
     .then(data => {
       this.turistplaces = data;
+      var nuevosLugares = [];
+      for (let index = 0; index < this.turistplaces.length; index++) {
+        if(this.turistplaces[index].Calificacions[0]){
+          nuevosLugares.push(this.turistplaces[index]);
+        }
+      }
+      if(nuevosLugares.length > 5){
+        nuevosLugares.splice(5, nuevosLugares.length - 5);
+      }
+      this.turistplaces = nuevosLugares;
     });
   }
 
@@ -82,6 +92,16 @@ export class HomePage {
     this.homeProvider.getPubTop()
     .then(data => {
       this.pubs = data;
+      var nuevosPubs = [];
+      for (let index = 0; index < this.pubs.length; index++) {
+        if(this.pubs[index].Calificacions[0]){
+          nuevosPubs.push(this.pubs[index]);
+        }
+      }
+      if(nuevosPubs.length > 5){
+        nuevosPubs.splice(5, nuevosPubs.length - 5);
+      }
+      this.pubs = nuevosPubs;
     });
   }
 

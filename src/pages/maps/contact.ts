@@ -91,18 +91,29 @@ export class MapsPage {
 
   pushSpin(mapa){
     for (let m of this.markers) {
-      console.log(m.CategoriaLugars[0].Categorium.nombre);
-      
+      let icono = null;
+      switch (m.CategoriaLugars[0].Categorium.nombre.toLowerCase()) {
+        case 'hotel':
+          icono = 'https://cdn2.iconfinder.com/data/icons/snipicons/500/map-marker-48.png';break;
+        case 'restaurante':
+          icono = '../../assets/imgs/restaurante.png';break;
+        case 'bar':
+        icono = 'https://cdn2.iconfinder.com/data/icons/snipicons/500/map-marker-48.png';break;
+        case 'lugar turistico':
+          icono = 'https://cdn2.iconfinder.com/data/icons/snipicons/500/map-marker-48.png';break;
+        default:
+          break;
+      }
       let posicion = new google.maps.LatLng(m.latitud, m.longitud);
       this.marcadores.push(new google.maps.Marker({
         title: m.nombre,
         description: m.CategoriaLugars[0].Categorium.nombre,
+        icon: icono,
         position: posicion,
         draggable:false,
       }));
       this.marcadores[this.marcadores.length - 1].setMap(mapa);
       this.marcadores[this.marcadores.length - 1].addListener('click', () => {
-        console.log("me aplastan "+m.nombre);
         this.presentAlert(m.nombre, m.descripcion,m.id);
       });
     }
@@ -127,7 +138,7 @@ export class MapsPage {
           text: 'Cancelar',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            
           }
         },
         {
