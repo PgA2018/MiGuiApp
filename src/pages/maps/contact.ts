@@ -3,7 +3,6 @@ import { NavController, AlertController } from 'ionic-angular';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { HomeProvider } from '../../providers/home/home';
 import { Geolocation } from '@ionic-native/geolocation';
-import { FilterByNameProvider } from '../../providers/filter-by-name/filter-by-name';
 
 declare var google;
 @Component({
@@ -19,13 +18,11 @@ export class MapsPage {
   apiKey: string = "AIzaSyA3uv4zlpr1Yi4Hb0h7rB7xXLNiePeBEc0";
   centerChangedCallback: any;
   markers;
-  markersSearch = [];
   infoWindow;
-  markerNombre;
   busqueda: string = '';
   marcadores = [];
 
-  constructor(public navCtrl: NavController,public maps: GoogleMapsProvider, public geolocation: Geolocation,public homeProvider: HomeProvider, public alertCtrl: AlertController,public filerByName : FilterByNameProvider) {
+  constructor(public navCtrl: NavController,public maps: GoogleMapsProvider, public geolocation: Geolocation,public homeProvider: HomeProvider, public alertCtrl: AlertController) {
     this.getHotel();
   }
   
@@ -40,7 +37,6 @@ export class MapsPage {
     this.homeProvider.getMapaAll()
     .then(data => {
       this.markers = data;
-      this.markersSearch = this.markers;
     });
   }
 
@@ -94,7 +90,7 @@ export class MapsPage {
   }
 
   pushSpin(mapa){
-    for (let m of this.markersSearch) {
+    for (let m of this.markers) {
       let posicion = new google.maps.LatLng(m.latitud, m.longitud);
       this.marcadores.push(new google.maps.Marker({
         title: m.nombre,
