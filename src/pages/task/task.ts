@@ -55,4 +55,5 @@ export class TaskPage {
   cancel(id): void{
     this.localNotifications.cancel(id);
   }
+
 }

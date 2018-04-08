@@ -16,6 +16,13 @@ export class MyApp {
   rootPage:any = SigninPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, authService: AuthServiceProvider, private oneSignal: OneSignal, private alertCtrl: AlertController) {
+     var user = authService.angularFireAuth.auth.currentUser;
+      if(user){
+        this.rootPage = TabsPage;
+      } else {
+        this.rootPage = SigninPage;
+      }
+    
     if (!authService.authenticated) {
       this.rootPage = SigninPage;
     } else {

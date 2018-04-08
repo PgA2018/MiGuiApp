@@ -34,7 +34,6 @@ export class TaskModalPage {
         });
       });
       
-      
       this.tasksRef = this.database.list('tasks');
       this.tasks = this.tasksRef.snapshotChanges()
       .map(changes => {

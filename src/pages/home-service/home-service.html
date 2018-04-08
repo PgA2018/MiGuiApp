@@ -9,12 +9,10 @@
         </ion-refresher-content>
     </ion-refresher>
     <ion-row>
-        <ion-slides *ngFor="let s of service">
-            <ion-card>
-                <ion-slide *ngFor="let f of s.FotoServicios">
-                    <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
-                </ion-slide>
-            </ion-card>
+        <ion-slides *ngFor="let s of service" centeredSlides="true" spaceBetween="10px" autoplay="3000">
+            <ion-slide *ngFor="let f of s.FotoServicios">
+                <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
+            </ion-slide>
         </ion-slides>
     </ion-row>
     <ion-card *ngFor="let s of service">

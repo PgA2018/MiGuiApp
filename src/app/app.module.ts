@@ -48,6 +48,7 @@ import { CommentsProvider } from '../providers/comments/comments';
 import { OneSignal } from '@ionic-native/onesignal';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Camera } from '@ionic-native/camera';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDk3BfriX8wpM2jip4_ejvXJHiRHkBaRec",
@@ -124,6 +125,7 @@ export const firebaseConfig = {
     OneSignal,
     Geolocation,
     GoogleMapsProvider,
+    Camera
   ]
 })
 export class AppModule {}

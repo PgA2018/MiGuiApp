@@ -11,6 +11,23 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+    <ng-container *ngIf="foto; else imageTemplate">
+        <ion-item>
+            <ion-avatar class="el-avatar avatar" padding item-start>
+                <img [src]='foto' />
+            </ion-avatar>
+            <h6 padding> {{correo}} </h6>
+        </ion-item>
+    </ng-container>
+    <ng-template #imageTemplate>
+        <ion-item>
+            <ion-avatar class="avatar" padding item-start>
+                <img src="../../assets/imgs/user.jpg" />
+            </ion-avatar>
+            <h6 padding> {{correo}} </h6>
+        </ion-item>
+    </ng-template>
+
     <ion-row>
         <ion-card (click)="goToAbout()">
             <ion-item>
@@ -21,36 +38,10 @@
         </ion-card>
     </ion-row>
     <ion-row>
-        <ion-card>
+        <ion-card (click)="selectPhoto()">
             <ion-item>
-                <ion-icon name="notifications" item-start></ion-icon>
-                <h5>Notificaciones</h5>
-            </ion-item>
-            <ion-item>
-                <ion-label>Tareas</ion-label>
-                <ion-toggle checked="true"></ion-toggle>
-            </ion-item>
-        </ion-card>
-        <ion-card>
-            <ion-item>
-                <ion-icon name="calendar" item-start></ion-icon>
-                <h5>Eventos</h5>
-            </ion-item>
-            <ion-item>
-                <ion-label>Hoteles</ion-label>
-                <ion-toggle checked="true"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Restaurantes</ion-label>
-                <ion-toggle checked="true"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Bares</ion-label>
-                <ion-toggle checked="false"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Lugares Turísticos</ion-label>
-                <ion-toggle checked="false"></ion-toggle>
+                Subir foto
+                <ion-icon name="image" item-end></ion-icon>
             </ion-item>
         </ion-card>
     </ion-row>

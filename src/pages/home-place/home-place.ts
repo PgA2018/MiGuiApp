@@ -5,6 +5,7 @@ import { HomeServicesListPage } from '../home-services-list/home-services-list';
 import { HomePlaceProvider } from '../../providers/home-place/home-place';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { CommentsProvider } from '../../providers/comments/comments';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @IonicPage()
 @Component({
@@ -22,6 +23,8 @@ export class HomePlacePage {
     informacionComentario;
     cali;
     id_usuario;
+    foto;
+    url;
     
     constructor(public navCtrl: NavController, 
         public navParams: NavParams, 
@@ -29,17 +32,24 @@ export class HomePlacePage {
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public commentProvider: CommentsProvider, 
-        public authServiceProvider: AuthServiceProvider) {
+        public authServiceProvider: AuthServiceProvider,
+        private domSanitizer: DomSanitizer) {
             const user = this.authServiceProvider.getCurrentUser();
             if(user != null){
                 this.id_usuario = user.uid;
+                this.url = user.photoURL;
             }
+            
         }
 
     ionViewDidLoad() {
         this.getPlace(this.navParams.get('id'));
         this.obtenerCalificacion(this.navParams.get('id'));
         this.items = [{expanded: false}];
+    }
+
+    transformar(){
+        return this.domSanitizer.bypassSecurityTrustResourceUrl(this.foto);
     }
 
     doRefresh(refresher) {
@@ -158,6 +168,10 @@ export class HomePlacePage {
 
     eliminarComentario(id, id_usuario){
         this.homePlace.eliminarComentario(id, id_usuario);
+    }
+
+    obtenerFoto(id_usuario){
+        this.foto = this.domSanitizer.bypassSecurityTrustResourceUrl(this.url);
     }
     
 }

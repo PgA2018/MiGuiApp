@@ -9,15 +9,13 @@
         </ion-refresher-content>
     </ion-refresher>
     <ion-row>
-        <ion-slides *ngFor="let p of place">
-            <ion-card>
-                <ion-slide *ngFor="let f of p.FotoLugars">
-                    <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
-                </ion-slide>
-                <div padding class="top-right" *ngFor="let c of p.Calificacions">
+        <ion-slides *ngFor="let p of place" centeredSlides="true" spaceBetween="10px" autoplay="3000">
+            <ion-slide *ngFor="let f of p.FotoLugars">
+                <div class="img-div" [style.backgroundImage]="'url('+ f.url +')'"></div>
+                <div class="top-right" *ngFor="let c of p.Calificacions">
                     <button ion-button round> {{c.promedio | number:'1.1-1'}} </button>
                 </div>
-            </ion-card>
+            </ion-slide>
         </ion-slides>
     </ion-row>
     <ion-card *ngFor="let p of place">
@@ -49,7 +47,7 @@
                 <ion-icon name="arrow-forward" item-end></ion-icon>
             </ion-item>
         </ion-card>
-        <ion-slides *ngFor="let p of place">
+        <ion-slides *ngFor="let p of place" loop="true" centeredSlides="true" autoplay="3000">
             <ion-slide *ngFor="let s of p.Servicios">
                 <ion-card (click)="goToService(s.id)">
                     <div *ngFor="let f of s.FotoServicios">
@@ -77,7 +75,10 @@
         </ion-card>
         <ion-list *ngFor="let p of place">
             <ion-item *ngFor="let c of p.ComentarioLugars">
-                <ion-avatar item-start>
+                <ion-avatar item-start *ngIf="foto">
+                    <img [src]='obtenerFoto(c.id_usuario)' />
+                </ion-avatar>
+                <ion-avatar item-start *ngIf="!foto">
                     <img src="../../assets/imgs/user.jpg" />
                 </ion-avatar>
                 <small> {{c.correo_usuario}} </small>
